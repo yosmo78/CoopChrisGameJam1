@@ -85,11 +85,16 @@ public class Movement : MonoBehaviour
      {
          float angle = Mathf.Atan2(moveDirection.y, moveDirection.x) * Mathf.Rad2Deg;
          transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+
+           // if (angle > 90 || angle < -90)
+            
+           //transform.localRotation = Quaternion.Euler(0,180,0);
+
      }
 
 
 
- }
+    }
 
 
 
