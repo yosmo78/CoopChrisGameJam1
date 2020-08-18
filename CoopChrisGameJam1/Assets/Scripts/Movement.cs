@@ -10,6 +10,7 @@ public class Movement : MonoBehaviour
 
     public float accelerationFactor = 100.0f;
     public float decelerationFactor = 1.0f;
+    public float timeFromZeroToMax = 2.0f;
 
     public float maxVelocity = 4.0f;
 
@@ -17,7 +18,7 @@ public class Movement : MonoBehaviour
     //Vector2 velocity;
 
 
- public float timeFromZeroToMax = 2.0f;  // How long it takes to reach max
+   // How long it takes to reach max
  
  void Update ()
  {
