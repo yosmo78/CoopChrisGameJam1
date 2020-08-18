@@ -16,7 +16,7 @@ public class Movement : MonoBehaviour
 
     Vector2 acceleration;
     //Vector2 velocity;
-
+    bool flipped = false;
 
    // How long it takes to reach max
  
@@ -84,12 +84,24 @@ public class Movement : MonoBehaviour
      if (moveDirection != Vector2.zero) 
      {
          float angle = Mathf.Atan2(moveDirection.y, moveDirection.x) * Mathf.Rad2Deg;
-         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-
-           // if (angle > 90 || angle < -90)
-            
-           //transform.localRotation = Quaternion.Euler(0,180,0);
-
+         if (angle < 90 && angle > -90)
+         {
+            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+            if(flipped)
+            {
+                transform.localScale  =  new Vector3(-1.0f*transform.localScale.x,transform.localScale.y,transform.localScale.z);
+                 flipped = false;
+            }
+         } 
+         else if (angle > 90 || angle < -90)
+         {
+            transform.rotation = Quaternion.AngleAxis(angle-180, Vector3.forward);
+            if (!flipped)
+            {
+                transform.localScale  =  new Vector3(-1.0f*transform.localScale.x,transform.localScale.y,transform.localScale.z);
+                flipped = true;
+            }
+         }
      }
 
 
