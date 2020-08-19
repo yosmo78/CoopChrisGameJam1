@@ -108,11 +108,4 @@ public class Movement : MonoBehaviour
 
     }
 
-
-
-    void FixedUpdate()
-    {
-
-    }
-
 }
