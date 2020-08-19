@@ -5,11 +5,13 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour
 {
 
-    public GameObject truck = GameObject.Find("Truck");
+    public GameObject truck;
     public GameObject boat;
     public GameObject tank;
 
     public Vector3 offset = new Vector3(0f, 0f, 0f);
+
+    public  GameObject following;
 
     void Start()
     {
@@ -20,23 +22,19 @@ public class CameraFollow : MonoBehaviour
         boat.GetComponent<Movement>().enabled = false;
         tank.GetComponent<Movement>().enabled = false;
 
-    }
-
-    void Update()
-    {
-        
-
+        following = truck;
 
     }
 
     void LateUpdate()
     {
 
-        if (Input.GetKeyDown(KeyCode.Alpha1)) { SwapToTruck(); }
+        if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1)) { SwapToTruck(); following = truck; }
 
-        if (Input.GetKeyDown(KeyCode.Alpha2)) { SwapToBoat(); }
+        if (Input.GetKeyDown(KeyCode.Alpha2)|| Input.GetKeyDown(KeyCode.Keypad2)) { SwapToBoat(); following = boat;}
 
-        if (Input.GetKeyDown(KeyCode.Alpha3)) { SwapToTank(); }
+        if (Input.GetKeyDown(KeyCode.Alpha3)|| Input.GetKeyDown(KeyCode.Keypad3)) { SwapToTank(); following = tank;}
+        transform.position = following.transform.position + offset;
 
     }
 
