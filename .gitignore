@@ -23,6 +23,8 @@
 !/CoopChrisGameJam1/[Aa]ssets/Animation/*.anim.meta
 !/[Aa]ssets/Animation/*.controller.meta
 !/CoopChrisGameJam1/[Aa]ssets/Animation/*.controller.meta
+!/CoopChrisGameJam1/[Aa]ssets/Animation/*.meta
+!/[Aa]ssets/Animation/*.meta
 
 !/[Aa]ssets/**/*.meta
 !/CoopChrisGameJam1/[Aa]ssets/**/*.meta
