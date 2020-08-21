@@ -7,7 +7,6 @@ public class PickupZone : MonoBehaviour
 	bool inZone = false;
 
 	public GameObject box;
-	public Animation anim;
 
 	void Start()
 	{
