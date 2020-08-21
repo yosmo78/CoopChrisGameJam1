@@ -5,13 +5,13 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour
 {
 
-    public GameObject truck;
-    public GameObject boat;
-    public GameObject tank;
+    public  GameObject truck;
+    public  GameObject boat;
+    public  GameObject tank;
 
     public Vector3 offset = new Vector3(0f, 0f, 0f);
 
-    public  GameObject following;
+    public static GameObject following;
 
     void Start()
     {
