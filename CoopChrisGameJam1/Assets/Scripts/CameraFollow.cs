@@ -34,7 +34,7 @@ public class CameraFollow : MonoBehaviour
     void LateUpdate()
     {
         if(Input.GetKeyDown(KeyCode.P))
-            ++PlayerStats.truckInventory;
+            PlayerStats.updateTruckInventory(1);
 
         if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1)) { SwapToTruck(); following = truck; }
 

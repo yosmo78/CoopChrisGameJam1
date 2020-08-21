@@ -12,4 +12,31 @@ public class PlayerStats : MonoBehaviour
 	public static int tankInventory = STARTING_INVENTORY;
 
 	public static int money = 0;
+
+
+	public static void updateTruckInventory(int amount)
+	{
+		truckInventory = truckInventory + amount;
+    	if(truckInventory < 0)
+    	{
+    		truckInventory = 0;
+    	}
+    	else if(truckInventory > MAX_INVENTORY)
+    	{
+    		truckInventory = MAX_INVENTORY;
+    	}
+
+
+    	if(truckInventory > 0)
+    	{
+
+    		Truck.spriteRenderer[0].sprite = Truck.fullTruckFront;
+    		Truck.spriteRenderer[1].sprite = Truck.fullTruckBack;
+    	}
+    	else
+    	{
+    		Truck.spriteRenderer[0].sprite = Truck.emptyTruckFront;
+    		Truck.spriteRenderer[1].sprite = Truck.emptyTruckBack;
+    	}
+	}
 }

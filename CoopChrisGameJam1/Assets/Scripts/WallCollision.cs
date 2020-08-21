@@ -21,11 +21,7 @@ public class WallCollision : MonoBehaviour
     		{
     			Rigidbody2D rb = GameObject.Find("Truck").GetComponent<Movement>().rb;
     			rb.velocity = slowDown*rb.velocity.normalized;
-    			--PlayerStats.truckInventory;
-    			if(PlayerStats.truckInventory < 0)
-    			{
-    				PlayerStats.truckInventory = 0;
-    			}
+    			PlayerStats.updateTruckInventory(-1);
     		}
     		else if(CameraFollow.following == CameraFollow.boat) 
     		{

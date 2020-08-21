@@ -22,11 +22,11 @@ public class PickupZone : MonoBehaviour
 				BoxAnim.done = false;
 				if(PlayerStats.truckInventory >= PlayerStats.MAX_INVENTORY-1)
 				{
-					PlayerStats.truckInventory = PlayerStats.MAX_INVENTORY;
+					PlayerStats.updateTruckInventory(1);
 				}
 				else
 				{
-					++PlayerStats.truckInventory;
+					PlayerStats.updateTruckInventory(1);
 					box.GetComponent<Animator>().Play("boxMove5sec");
 				}
 			}

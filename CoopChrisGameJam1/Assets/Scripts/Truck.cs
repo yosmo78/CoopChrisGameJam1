@@ -4,41 +4,21 @@ using UnityEngine;
 
 public class Truck : MonoBehaviour
 {
-	public SpriteRenderer[] spriteRenderer;
-    public Sprite emptyTruckBack;
-    public Sprite emptyTruckFront;
-    public Sprite fullTruckBack;
-    public Sprite fullTruckFront;
-    void Start()
+	public static SpriteRenderer[] spriteRenderer;
+    public static Sprite emptyTruckBack;
+    public static Sprite emptyTruckFront;
+    public static Sprite fullTruckBack;
+    public static Sprite fullTruckFront;
+    void Awake()
     {
        spriteRenderer =  this.GetComponentsInChildren<SpriteRenderer>();
-    }
 
-    //maybe move this in an update truck inventory function
-    void Update()
-    {
-    	if(PlayerStats.truckInventory > 0)
-    	{
-    		foreach(SpriteRenderer sp in spriteRenderer) {
-           		if(sp.CompareTag("truckFront")) {
-           			sp.sprite = fullTruckFront;
-      	    	}
-      	    	if(sp.CompareTag("truckBack")) {
-           			sp.sprite = fullTruckBack;
-      	    	}
-      		}
-    	}
-    	else
-    	{
-    		foreach(SpriteRenderer sp in spriteRenderer) {
-           		if(sp.CompareTag("truckFront")) {
-           			sp.sprite = emptyTruckFront;
-      	    	}
-      	    	if(sp.CompareTag("truckBack")) {
-           			sp.sprite = emptyTruckBack;
-      	    	}
-      		}
-    	}
+       fullTruckFront = (Instantiate(Resources.Load("colored_transparent_packed_971")) as GameObject).GetComponent<SpriteRenderer>().sprite;
+       fullTruckBack = (Instantiate(Resources.Load("colored_transparent_packed_972")) as GameObject).GetComponent<SpriteRenderer>().sprite;
+		emptyTruckBack = (Instantiate(Resources.Load("colored_transparent_packed_924")) as GameObject).GetComponent<SpriteRenderer>().sprite;
+    	emptyTruckFront = (Instantiate(Resources.Load("colored_transparent_packed_923")) as GameObject).GetComponent<SpriteRenderer>().sprite;
 
-    }
+   }
+
+
 }
