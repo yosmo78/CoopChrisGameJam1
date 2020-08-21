@@ -21,8 +21,10 @@
 !/[Aa]ssets/**/*.meta
 !/CoopChrisGameJam1/[Aa]ssets/**/*.meta
 
-!/[Aa]ssets/Animation/**/*.meta
-!/CoopChrisGameJam1/[Aa]ssets/Animation/**/*.meta
+!/[Aa]ssets/Animation/**/*.anim.meta
+!/CoopChrisGameJam1/[Aa]ssets/Animation/**/*.anim.meta
+!/[Aa]ssets/Animation/**/*.controller.meta
+!/CoopChrisGameJam1/[Aa]ssets/Animation/**/*.controller.meta
 
 # Uncomment this line if you wish to ignore the asset store tools plugin
 # /[Aa]ssets/AssetStoreTools*
