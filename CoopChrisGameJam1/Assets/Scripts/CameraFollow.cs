@@ -5,22 +5,27 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour
 {
 
-    public GameObject truck;
-    public GameObject boat;
-    public GameObject tank;
+    public static GameObject truck = null;
+    public static GameObject boat = null;
+    public static GameObject tank = null;
 
     public Vector3 offset = new Vector3(0f, 0f, 0f);
 
-    public static GameObject following;
+    public static GameObject following = null;
+
 
     void Start()
     {
 
+        truck = GameObject.Find("Truck");
+        boat = GameObject.Find("Boat");
+        tank = GameObject.Find("Tank");
+
         transform.position = truck.transform.position + offset;
 
-        truck.GetComponent<Movement>().enabled = true;
-        boat.GetComponent<Movement>().enabled = false;
-        tank.GetComponent<Movement>().enabled = false;
+        truck.GetComponent<Movement>().on = true;
+        boat.GetComponent<Movement>().on = false;
+        tank.GetComponent<Movement>().on = false;
 
         following = truck;
 
@@ -28,6 +33,8 @@ public class CameraFollow : MonoBehaviour
 
     void LateUpdate()
     {
+        if(Input.GetKeyDown(KeyCode.P))
+            ++PlayerStats.truckInventory;
 
         if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1)) { SwapToTruck(); following = truck; }
 
@@ -43,9 +50,9 @@ public class CameraFollow : MonoBehaviour
     {
 
         transform.position = truck.transform.position + offset;
-        truck.GetComponent<Movement>().enabled = true;
-        boat.GetComponent<Movement>().enabled = false;
-        tank.GetComponent<Movement>().enabled = false;
+        truck.GetComponent<Movement>().on = true;
+        boat.GetComponent<Movement>().on = false;
+        tank.GetComponent<Movement>().on = false;
 
 
     }
@@ -54,9 +61,9 @@ public class CameraFollow : MonoBehaviour
     {
 
         transform.position = boat.transform.position + offset;
-        truck.GetComponent<Movement>().enabled = false;
-        boat.GetComponent<Movement>().enabled = true;
-        tank.GetComponent<Movement>().enabled = false;
+        truck.GetComponent<Movement>().on = false;
+        boat.GetComponent<Movement>().on = true;
+        tank.GetComponent<Movement>().on = false;
 
     }
 
@@ -64,9 +71,9 @@ public class CameraFollow : MonoBehaviour
     {
 
         transform.position = tank.transform.position + offset;
-        truck.GetComponent<Movement>().enabled = false;
-        boat.GetComponent<Movement>().enabled = false;
-        tank.GetComponent<Movement>().enabled = true;
+        truck.GetComponent<Movement>().on = false;
+        boat.GetComponent<Movement>().on = false;
+        tank.GetComponent<Movement>().on = true;
 
     }
 

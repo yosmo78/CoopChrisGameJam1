@@ -18,6 +18,8 @@ public class Movement : MonoBehaviour
     //Vector2 velocity;
     bool flipped = false;
 
+    public bool on = false;
+
    // How long it takes to reach max
  
  void Update ()
@@ -26,12 +28,14 @@ public class Movement : MonoBehaviour
      float moveTowardsX = 0;
      float moveTowardsY = 0;
 
+     if(on)
+    {   
      if (Input.GetAxisRaw("Horizontal") == 1)
      {
 
          moveTowardsX = maxVelocity;
 
-        }
+     }
      else if (Input.GetAxisRaw("Horizontal") == -1)
      {
 
@@ -51,6 +55,7 @@ public class Movement : MonoBehaviour
          moveTowardsY = -maxVelocity;
 
      }
+    }
 
      float changeRatePerSecondX = ((moveTowardsX == 0?decelerationFactor:accelerationFactor) / timeFromZeroToMax) * Time.deltaTime;
      float changeRatePerSecondY = ((moveTowardsY == 0?decelerationFactor:accelerationFactor) / timeFromZeroToMax) * Time.deltaTime;

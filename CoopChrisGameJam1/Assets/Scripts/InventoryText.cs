@@ -12,6 +12,23 @@ public class InventoryText : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+    	if(CameraFollow.following == CameraFollow.truck) 
+    	{
+    		text.text = PlayerStats.truckInventory+"/"+PlayerStats.MAX_INVENTORY;
+    	}
+    	else if(CameraFollow.following == CameraFollow.boat) 
+    	{
+    		text.text = PlayerStats.boatInventory+"/"+PlayerStats.MAX_INVENTORY;
+    	}
+    	else if(CameraFollow.following == CameraFollow.tank) 
+    	{
+    		text.text = PlayerStats.tankInventory+"/"+PlayerStats.MAX_INVENTORY;
+    	}
+    	else
+    	{
+    		text.text = "0/0";
+    	}
+
         transform.position = CameraFollow.following.transform.position + offset;
     }
 }
