@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System; 
+using System;
 
 public class Movement : MonoBehaviour
 {
@@ -37,20 +37,20 @@ public class Movement : MonoBehaviour
 
          moveTowardsX = -maxVelocity;
 
-     }
+        }
 
      if (Input.GetAxisRaw("Vertical") == 1)
      {
 
          moveTowardsY = maxVelocity;
 
-     }
+        }
      else if (Input.GetAxisRaw("Vertical") == -1)
      {
 
          moveTowardsY = -maxVelocity;
 
-     }
+        }
 
      float changeRatePerSecondX = ((moveTowardsX == 0?decelerationFactor:accelerationFactor) / timeFromZeroToMax) * Time.deltaTime;
      float changeRatePerSecondY = ((moveTowardsY == 0?decelerationFactor:accelerationFactor) / timeFromZeroToMax) * Time.deltaTime;
