@@ -14,15 +14,15 @@ public class InventoryText : MonoBehaviour
     {
     	if(CameraFollow.following == CameraFollow.truck) 
     	{
-    		text.text = PlayerStats.truckInventory+":"+PlayerStats.MAX_INVENTORY;
+    		text.text = PlayerStats.truckInventory+":"+PlayerStats.TRUCK_MAX_INVENTORY;
     	}
     	else if(CameraFollow.following == CameraFollow.boat) 
     	{
-    		text.text = PlayerStats.boatInventory+":"+PlayerStats.MAX_INVENTORY;
+    		text.text = PlayerStats.boatInventory+":"+PlayerStats.BOAT_MAX_INVENTORY;
     	}
     	else if(CameraFollow.following == CameraFollow.tank) 
     	{
-    		text.text = PlayerStats.tankInventory+":"+PlayerStats.MAX_INVENTORY;
+    		text.text = PlayerStats.tankInventory+":"+PlayerStats.TANK_MAX_INVENTORY;
     	}
     	else
     	{

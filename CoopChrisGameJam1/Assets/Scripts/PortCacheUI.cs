@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 
-public enum TruckButtonTypes
+public enum PortButtonTypes
 {
     RoadExpansion1,
     RoadExpansion2,
@@ -16,7 +16,7 @@ public enum TruckButtonTypes
     Exit
 }
 
-public class TruckUpgradeUI : MonoBehaviour
+public class PortCacheUI : MonoBehaviour
 {
 	public int RoadExpansion1Price = 50;
     public int RoadExpansion2Price = 150;
@@ -49,15 +49,15 @@ public class TruckUpgradeUI : MonoBehaviour
 
 	void Start()
     {
-        RoadExpansion1Button.onClick.AddListener(delegate {TaskWithParameters(TruckButtonTypes.RoadExpansion1); });
-        RoadExpansion2Button.onClick.AddListener(delegate {TaskWithParameters(TruckButtonTypes.RoadExpansion2); });
-        InventoryIncreaseButton.onClick.AddListener(delegate {TaskWithParameters(TruckButtonTypes.InventoryIncrease); });
-    	SpeedIncreaseButton.onClick.AddListener(delegate {TaskWithParameters(TruckButtonTypes.SpeedIncrease); });
-    	CushionedCargoButton.onClick.AddListener(delegate {TaskWithParameters(TruckButtonTypes.CushionedCargo); });
-    	ProductionIncreaseButton.onClick.AddListener(delegate {TaskWithParameters(TruckButtonTypes.ProductionIncrease); });
-    	AutoDeliveryButton.onClick.AddListener(delegate {TaskWithParameters(TruckButtonTypes.AutoDelivery); });
-    	KingBlessingButton.onClick.AddListener(delegate {TaskWithParameters(TruckButtonTypes.KingBlessing); });
-    	ExitButton.onClick.AddListener(delegate {TaskWithParameters(TruckButtonTypes.Exit); });
+        RoadExpansion1Button.onClick.AddListener(delegate {TaskWithParameters(PortButtonTypes.RoadExpansion1); });
+        RoadExpansion2Button.onClick.AddListener(delegate {TaskWithParameters(PortButtonTypes.RoadExpansion2); });
+        InventoryIncreaseButton.onClick.AddListener(delegate {TaskWithParameters(PortButtonTypes.InventoryIncrease); });
+    	SpeedIncreaseButton.onClick.AddListener(delegate {TaskWithParameters(PortButtonTypes.SpeedIncrease); });
+    	CushionedCargoButton.onClick.AddListener(delegate {TaskWithParameters(PortButtonTypes.CushionedCargo); });
+    	ProductionIncreaseButton.onClick.AddListener(delegate {TaskWithParameters(PortButtonTypes.ProductionIncrease); });
+    	AutoDeliveryButton.onClick.AddListener(delegate {TaskWithParameters(PortButtonTypes.AutoDelivery); });
+    	KingBlessingButton.onClick.AddListener(delegate {TaskWithParameters(PortButtonTypes.KingBlessing); });
+    	ExitButton.onClick.AddListener(delegate {TaskWithParameters(PortButtonTypes.Exit); });
 
     	RoadExpansion1Button.GetComponentInChildren<Text>().text = "$"+RoadExpansion1Price;
     	RoadExpansion2Button.GetComponentInChildren<Text>().text = "$"+RoadExpansion2Price;
@@ -69,54 +69,54 @@ public class TruckUpgradeUI : MonoBehaviour
     	KingBlessingButton.GetComponentInChildren<Text>().text = "$"+KingBlessingPrice;
     }
 
-	public void TaskWithParameters(TruckButtonTypes tbt)
+	public void TaskWithParameters(PortButtonTypes tbt)
     {
         //Output this to console when the Button2 is clicked
         switch(tbt)
         {
-        	case TruckButtonTypes.RoadExpansion1:
+        	case PortButtonTypes.RoadExpansion1:
         		{
         			Debug.Log("RoadExpansion1 purchased");
         		}
         		break;
-        	case TruckButtonTypes.RoadExpansion2:
+        	case PortButtonTypes.RoadExpansion2:
         		{
         			Debug.Log("RoadExpansion2 purchased");
         		}
         		break;
-        	case TruckButtonTypes.InventoryIncrease:
+        	case PortButtonTypes.InventoryIncrease:
         		{
         			Debug.Log("InventoryIncrease purchased");
         			PlayerStats.TRUCK_MAX_INVENTORY += 5;
         			//need to modify text length above vehicles in main scene
         		}
         		break;
-    		case TruckButtonTypes.SpeedIncrease:
+    		case PortButtonTypes.SpeedIncrease:
         		{
         			Debug.Log("SpeedIncrease purchased");
         		}
     			break;
-    		case TruckButtonTypes.CushionedCargo:
+    		case PortButtonTypes.CushionedCargo:
         		{
         			Debug.Log("CushionedCargo purchased");
         		}
     			break;
-    		case TruckButtonTypes.ProductionIncrease:
+    		case PortButtonTypes.ProductionIncrease:
         		{
         			Debug.Log("ProductionIncrease purchased");
         		}
     			break;
-    		case TruckButtonTypes.AutoDelivery:
+    		case PortButtonTypes.AutoDelivery:
         		{
         			Debug.Log("AutoDelivery purchased");
         		}
     			break;
-    		case TruckButtonTypes.KingBlessing:
+    		case PortButtonTypes.KingBlessing:
         		{
         			Debug.Log("KingBlessing purchased");
         		}
     			break;
-    		case TruckButtonTypes.Exit:
+    		case PortButtonTypes.Exit:
     			{
 
     				Truck.SetActive(true);
