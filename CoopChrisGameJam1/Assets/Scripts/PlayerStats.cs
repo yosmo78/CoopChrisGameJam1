@@ -11,6 +11,16 @@ public class PlayerStats : MonoBehaviour
     public static int MAX_AMOUNT_TRUCK_INVENTORY_UPGRADES = 19;
     public static int amountTruckInventoryUpgrades = 0;
 
+    public static int MAX_AMOUNT_BOAT_INVENTORY_UPGRADES = 19;
+    public static int amountBoatInventoryUpgrades = 0;
+
+    public static int MAX_AMOUNT_TANK_INVENTORY_UPGRADES = 19;
+    public static int amountTankInventoryUpgrades = 0;
+
+    public static int MAX_AMOUNT_TRUCK_PORT_INVENTORY_UPGRADES = 14;
+    public static int amountTruckPortInventoryUpgrades = 0;
+
+
     public static int TRUCK_MAX_INVENTORY = STARTING_MAX_INVENTORY;
     public static int BOAT_MAX_INVENTORY = STARTING_MAX_INVENTORY;
     public static int TANK_MAX_INVENTORY = STARTING_MAX_INVENTORY;

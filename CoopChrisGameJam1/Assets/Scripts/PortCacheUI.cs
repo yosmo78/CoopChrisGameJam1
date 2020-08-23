@@ -17,8 +17,6 @@ public class PortCacheUI : MonoBehaviour
 {
 	public int SellPortInventoryPrice = 10;
     public int PortInventoryIncreasePrice = 150;
-    //public int DepositTruckInventoryPrice = 100;
-    //public int WithdrawBoatInventoryPrice = 100;
     public int BuyPirateMedallionPrice = 9999;
     
 
@@ -42,6 +40,8 @@ public class PortCacheUI : MonoBehaviour
 
     private float timeToAppear = 2f;
     private float timeWhenDisappear;
+
+    private static bool isInventoryIncreaseMaxed = false;
 
 
 	void Start()
@@ -104,12 +104,35 @@ public class PortCacheUI : MonoBehaviour
         		break;
         	case PortButtonTypes.PortInventoryIncrease:
         		{
-        			Debug.Log("PortInventoryIncrease purchased");
+        			if(!isInventoryIncreaseMaxed)
+                    {
+                        if(PlayerStats.money >= PortInventoryIncreasePrice)
+                        {
+                            PlayerStats.money -= PortInventoryIncreasePrice;
+                            PlayerStats.TRUCK_PORT_MAX_INVENTORY += 5;
+                            ++PlayerStats.amountTruckPortInventoryUpgrades;
+                            PortInventoryIncreasePrice += 100;
+                            if(PlayerStats.amountTruckPortInventoryUpgrades == PlayerStats.MAX_AMOUNT_TRUCK_PORT_INVENTORY_UPGRADES)
+                            {
+                                isInventoryIncreaseMaxed = true;
+                                PortInventoryIncreaseButton.GetComponent<Image>().color = new Color32(255,0,0,100);
+                                PortInventoryIncreaseButton.GetComponentInChildren<Text>().text = "DONE";
+                            }
+                        }
+                        else
+                        {
+                            SetStoreText("NOT ENOUGH MONEY");
+                        }
+                    }
+                    else
+                    {
+                        SetStoreText("MAX PORT INVENTORY");
+                    }
         		}
         		break;
         	case PortButtonTypes.DepositTruckInventory:
         		{
-                    if(PlayerStats.truckInventoryHas(1) && PlayerStats.truckPortInventory < PlayerStats.TRUCK_PORT_MAX_INVENTORY+1)
+                    if(PlayerStats.truckInventoryHas(1) && PlayerStats.truckPortInventory < PlayerStats.TRUCK_PORT_MAX_INVENTORY)
                     {
                         PlayerStats.updateTruckInventory(-1);
                         ++PlayerStats.truckPortInventory;
