@@ -50,8 +50,6 @@ public class BoatUpgradeUI : MonoBehaviour
     private float timeToAppear = 2f;
     private float timeWhenDisappear;
 
-    public GameObject box;
-
    	private static bool isCoveExpansionPurchased = false;
     private static bool isSpeedBoatBoostPurchased = false;
     private static bool isInventoryIncreaseMaxed = false;
