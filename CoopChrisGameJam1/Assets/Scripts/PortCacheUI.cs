@@ -5,68 +5,83 @@ using UnityEngine;
 
 public enum PortButtonTypes
 {
-    RoadExpansion1,
-    RoadExpansion2,
-    InventoryIncrease,
-    SpeedIncrease,
-    CushionedCargo,
-    ProductionIncrease,
-    AutoDelivery,
-    KingBlessing,
+    SellPortInventory,
+    PortInventoryIncrease,
+    DepositTruckInventory,
+    WithdrawBoatInventory,
+    BuyPirateMedallion,
     Exit
 }
 
 public class PortCacheUI : MonoBehaviour
 {
-	public int RoadExpansion1Price = 50;
-    public int RoadExpansion2Price = 150;
-    public int InventoryIncreasePrice = 100;
-    public int SpeedIncreasePrice = 100;
-    public int CushionedCargoPrice = 300;
-    public int ProductionIncreasePrice = 250;
-    public int AutoDeliveryPrice = 1000;
-    public int KingBlessingPrice = 9000;
+	public int SellPortInventoryPrice = 10;
+    public int PortInventoryIncreasePrice = 150;
+    //public int DepositTruckInventoryPrice = 100;
+    //public int WithdrawBoatInventoryPrice = 100;
+    public int BuyPirateMedallionPrice = 9999;
+    
 
-
-
-	public Button RoadExpansion1Button;
-	public Button RoadExpansion2Button;
-	public Button InventoryIncreaseButton;
-    public Button SpeedIncreaseButton;
-    public Button CushionedCargoButton;
-    public Button ProductionIncreaseButton;
-    public Button AutoDeliveryButton;
-    public Button KingBlessingButton;
+	public Button SellPortInventoryButton;
+	public Button PortInventoryIncreaseButton;
+	public Button DepositTruckInventoryButton;
+    public Button WithdrawBoatInventoryButton;
+    public Button BuyPirateMedallionButton;
 
     public Button ExitButton;
+
+    public Text PortInventoryText;
+    public Text TruckInventoryText;
+    public Text BoatInventoryText;
 
     public Text storeMessage;
 
     public GameObject Truck;
-    public GameObject TruckUI;
-    public GameObject UpgradeZone;
+    public GameObject TruckPortUI;
+    public GameObject PortCacheZone;
+
+    private float timeToAppear = 2f;
+    private float timeWhenDisappear;
 
 
 	void Start()
     {
-        RoadExpansion1Button.onClick.AddListener(delegate {TaskWithParameters(PortButtonTypes.RoadExpansion1); });
-        RoadExpansion2Button.onClick.AddListener(delegate {TaskWithParameters(PortButtonTypes.RoadExpansion2); });
-        InventoryIncreaseButton.onClick.AddListener(delegate {TaskWithParameters(PortButtonTypes.InventoryIncrease); });
-    	SpeedIncreaseButton.onClick.AddListener(delegate {TaskWithParameters(PortButtonTypes.SpeedIncrease); });
-    	CushionedCargoButton.onClick.AddListener(delegate {TaskWithParameters(PortButtonTypes.CushionedCargo); });
-    	ProductionIncreaseButton.onClick.AddListener(delegate {TaskWithParameters(PortButtonTypes.ProductionIncrease); });
-    	AutoDeliveryButton.onClick.AddListener(delegate {TaskWithParameters(PortButtonTypes.AutoDelivery); });
-    	KingBlessingButton.onClick.AddListener(delegate {TaskWithParameters(PortButtonTypes.KingBlessing); });
+        SellPortInventoryButton.onClick.AddListener(delegate {TaskWithParameters(PortButtonTypes.SellPortInventory); });
+        PortInventoryIncreaseButton.onClick.AddListener(delegate {TaskWithParameters(PortButtonTypes.PortInventoryIncrease); });
+        DepositTruckInventoryButton.onClick.AddListener(delegate {TaskWithParameters(PortButtonTypes.DepositTruckInventory); });
+    	WithdrawBoatInventoryButton.onClick.AddListener(delegate {TaskWithParameters(PortButtonTypes.WithdrawBoatInventory); });
+    	BuyPirateMedallionButton.onClick.AddListener(delegate {TaskWithParameters(PortButtonTypes.BuyPirateMedallion); });
     	ExitButton.onClick.AddListener(delegate {TaskWithParameters(PortButtonTypes.Exit); });
 
-    	RoadExpansion1Button.GetComponentInChildren<Text>().text = "$"+RoadExpansion1Price;
-    	RoadExpansion2Button.GetComponentInChildren<Text>().text = "$"+RoadExpansion2Price;
-    	InventoryIncreaseButton.GetComponentInChildren<Text>().text = "$"+InventoryIncreasePrice;
-    	SpeedIncreaseButton.GetComponentInChildren<Text>().text = "$"+SpeedIncreasePrice;
-    	CushionedCargoButton.GetComponentInChildren<Text>().text = "$"+CushionedCargoPrice;
-    	ProductionIncreaseButton.GetComponentInChildren<Text>().text = "$"+ProductionIncreasePrice;
-    	AutoDeliveryButton.GetComponentInChildren<Text>().text = "$"+AutoDeliveryPrice;
-    	KingBlessingButton.GetComponentInChildren<Text>().text = "$"+KingBlessingPrice;
+    	SellPortInventoryButton.GetComponentInChildren<Text>().text = "+$"+SellPortInventoryPrice;
+    	PortInventoryIncreaseButton.GetComponentInChildren<Text>().text = "$"+PortInventoryIncreasePrice;
+    	DepositTruckInventoryButton.GetComponentInChildren<Text>().text = "-1 T";
+    	WithdrawBoatInventoryButton.GetComponentInChildren<Text>().text = "+1 B";
+    	BuyPirateMedallionButton.GetComponentInChildren<Text>().text = "$"+BuyPirateMedallionPrice;
+
+        PortInventoryText.text = PlayerStats.truckPortInventory + ":" + PlayerStats.TRUCK_PORT_MAX_INVENTORY;
+        TruckInventoryText.text = PlayerStats.truckInventory + ":" + PlayerStats.TRUCK_MAX_INVENTORY;
+        BoatInventoryText.text = PlayerStats.boatInventory + ":" + PlayerStats.BOAT_MAX_INVENTORY;
+        storeMessage.text = "";
+    }
+
+
+    void Update()
+    {
+        PortInventoryText.text = PlayerStats.truckPortInventory + ":" + PlayerStats.TRUCK_PORT_MAX_INVENTORY;
+        TruckInventoryText.text = PlayerStats.truckInventory + ":" + PlayerStats.TRUCK_MAX_INVENTORY;
+        BoatInventoryText.text = PlayerStats.boatInventory + ":" + PlayerStats.BOAT_MAX_INVENTORY;
+
+        if(storeMessage.text != "" && (Time.time >= timeWhenDisappear))
+        {
+            storeMessage.text = "";
+        }
+    }
+
+    void SetStoreText(string text)
+    {
+        storeMessage.text = text;
+        timeWhenDisappear = Time.time + timeToAppear;
     }
 
 	public void TaskWithParameters(PortButtonTypes tbt)
@@ -74,54 +89,62 @@ public class PortCacheUI : MonoBehaviour
         //Output this to console when the Button2 is clicked
         switch(tbt)
         {
-        	case PortButtonTypes.RoadExpansion1:
+        	case PortButtonTypes.SellPortInventory:
         		{
-        			Debug.Log("RoadExpansion1 purchased");
+                    if(PlayerStats.truckPortInventoryHas(1))
+                    {
+                        --PlayerStats.truckPortInventory;
+                        PlayerStats.money += SellPortInventoryPrice;
+                    }
+                    else
+                    {
+                        SetStoreText("PORT INVENTORY EMPTY");
+                    }
         		}
         		break;
-        	case PortButtonTypes.RoadExpansion2:
+        	case PortButtonTypes.PortInventoryIncrease:
         		{
-        			Debug.Log("RoadExpansion2 purchased");
+        			Debug.Log("PortInventoryIncrease purchased");
         		}
         		break;
-        	case PortButtonTypes.InventoryIncrease:
+        	case PortButtonTypes.DepositTruckInventory:
         		{
-        			Debug.Log("InventoryIncrease purchased");
-        			PlayerStats.TRUCK_MAX_INVENTORY += 5;
+                    if(PlayerStats.truckInventoryHas(1) && PlayerStats.truckPortInventory < PlayerStats.TRUCK_PORT_MAX_INVENTORY+1)
+                    {
+                        PlayerStats.updateTruckInventory(-1);
+                        ++PlayerStats.truckPortInventory;
+                    }
+                    else
+                    {
+                        SetStoreText("TRUCK INVENTORY EMPTY");
+                    }
         			//need to modify text length above vehicles in main scene
         		}
         		break;
-    		case PortButtonTypes.SpeedIncrease:
+    		case PortButtonTypes.WithdrawBoatInventory:
         		{
-        			Debug.Log("SpeedIncrease purchased");
+                    if(PlayerStats.truckPortInventoryHas(1) && !PlayerStats.isBoatInventoryFull())
+                    {
+                        PlayerStats.updateBoatInventory(1);
+                        --PlayerStats.truckPortInventory;
+                    }
+                    else
+                    {
+                        SetStoreText("PORT INVENTORY EMPTY");
+                    }
         		}
     			break;
-    		case PortButtonTypes.CushionedCargo:
+    		case PortButtonTypes.BuyPirateMedallion:
         		{
-        			Debug.Log("CushionedCargo purchased");
-        		}
-    			break;
-    		case PortButtonTypes.ProductionIncrease:
-        		{
-        			Debug.Log("ProductionIncrease purchased");
-        		}
-    			break;
-    		case PortButtonTypes.AutoDelivery:
-        		{
-        			Debug.Log("AutoDelivery purchased");
-        		}
-    			break;
-    		case PortButtonTypes.KingBlessing:
-        		{
-        			Debug.Log("KingBlessing purchased");
+        			Debug.Log("BuyPirateMedallion purchased");
         		}
     			break;
     		case PortButtonTypes.Exit:
     			{
 
-    				Truck.SetActive(true);
-    				TruckUI.SetActive(false);
-    				UpgradeZone.GetComponent<UpgradeZoneCity>().inMenu = false;
+    				Truck.SetActive(true); //maybe not set truck to inactive but just re-enable Movement script
+    				TruckPortUI.SetActive(false);
+    				PortCacheZone.GetComponent<PortCacheZone>().inMenu = false;
     			}
     			break;
         	default:
