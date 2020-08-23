@@ -27,7 +27,7 @@ public class TruckUpgradeUI : MonoBehaviour
     public int AutoDeliveryPrice = 1000;
     public int KingBlessingPrice = 9000;
 
-
+    public int InventoryIncreaseBasePrice = 100;
 
 	public Button RoadExpansion1Button;
 	public Button RoadExpansion2Button;
@@ -45,6 +45,8 @@ public class TruckUpgradeUI : MonoBehaviour
     public GameObject Truck;
     public GameObject TruckUI;
     public GameObject UpgradeZone;
+    public GameObject hazardShortCut1;
+    public GameObject hazardShortCut2;
 
     private float timeToAppear = 2f;
     private float timeWhenDisappear;
@@ -108,10 +110,11 @@ public class TruckUpgradeUI : MonoBehaviour
         		{
         			if(PlayerStats.money >= RoadExpansion1Price && !isRoadExpansion1Purchased)
                     {
-                        Debug.Log("RoadExpansion1 purchased");
+                        hazardShortCut1.SetActive(false);
                         isRoadExpansion1Purchased = true;
                         PlayerStats.money -= RoadExpansion1Price;
                         RoadExpansion1Button.GetComponent<Image>().color = new Color32(255,0,0,100);
+                        RoadExpansion1Button.GetComponentInChildren<Text>().text = "DONE";
                     }
                     else
                     {
@@ -128,9 +131,25 @@ public class TruckUpgradeUI : MonoBehaviour
         		break;
         	case TruckButtonTypes.RoadExpansion2:
         		{
-        			Debug.Log("RoadExpansion2 purchased");
-
-         			RoadExpansion2Button.GetComponent<Image>().color = new Color32(255,0,0,100);
+        			if(PlayerStats.money >= RoadExpansion2Price && !isRoadExpansion2Purchased)
+                    {
+                        hazardShortCut2.SetActive(false);
+                        isRoadExpansion2Purchased = true;
+                        PlayerStats.money -= RoadExpansion2Price;
+                        RoadExpansion2Button.GetComponent<Image>().color = new Color32(255,0,0,100);
+                        RoadExpansion2Button.GetComponentInChildren<Text>().text = "DONE";
+                    }
+                    else
+                    {
+                    	if(isRoadExpansion2Purchased)
+                    	{
+                    		SetStoreText("ALREADY PURCHASED");
+                    	}
+                    	else
+                    	{
+                        	SetStoreText("NOT ENOUGH MONEY");
+                        }
+                    }
         		}
         		break;
         	case TruckButtonTypes.InventoryIncrease:
