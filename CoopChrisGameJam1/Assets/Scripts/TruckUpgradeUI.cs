@@ -214,7 +214,7 @@ public class TruckUpgradeUI : MonoBehaviour
         		{
         			if(PlayerStats.money >= CushionedCargoPrice && !isCushionedCargoPurchased)
                     {
-                    	PlayerStats.BREAKING_VELOCITY = 50;
+                    	PlayerStats.TRUCK_BREAKING_VELOCITY = 50;
                         isCushionedCargoPurchased = true;
                         PlayerStats.money -= CushionedCargoPrice;
                         CushionedCargoButton.GetComponent<Image>().color = new Color32(255,0,0,100);
@@ -238,7 +238,7 @@ public class TruckUpgradeUI : MonoBehaviour
 
         			if(PlayerStats.money >= ProductionIncreasePrice && !isProductionIncreasePurchased)
                     {
-        				box.GetComponent<Animator>().speed = 1.1f;
+        				box.GetComponent<Animator>().speed = 2.0f;
                         isProductionIncreasePurchased = true;
                         PlayerStats.money -= ProductionIncreasePrice;
                         ProductionIncreaseButton.GetComponent<Image>().color = new Color32(255,0,0,100);

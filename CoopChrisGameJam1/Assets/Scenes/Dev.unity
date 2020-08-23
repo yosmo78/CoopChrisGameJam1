@@ -255,7 +255,7 @@ GameObject:
   - component: {fileID: 60258962}
   - component: {fileID: 60258961}
   m_Layer: 13
-  m_Name: CushionedCargo
+  m_Name: FactoryLineSpeedIncrease
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -277,8 +277,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -88.9, y: -13.5}
-  m_SizeDelta: {x: 216.43115, y: 26.134872}
+  m_AnchoredPosition: {x: -54.686, y: -13.5}
+  m_SizeDelta: {x: 284.85934, y: 26.134872}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &60258961
 MonoBehaviour:
@@ -313,7 +313,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: CUSHIONED CARGO
+  m_Text: SPEEDY FACTORY LINE
 --- !u!222 &60258962
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2803,7 +2803,7 @@ GameObject:
   - component: {fileID: 198833691}
   - component: {fileID: 198833690}
   m_Layer: 13
-  m_Name: SpeedBoatBoost
+  m_Name: BoatFactoryLine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2861,7 +2861,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: SPEED BOAT BOOST
+  m_Text: BOAT FACTORY LINE
 --- !u!222 &198833691
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -12198,7 +12198,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &485685117
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28311,7 +28311,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 910632330}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -13.14, y: 14.59, z: -6.499031}
+  m_LocalPosition: {x: 21.12, y: 3.21, z: -6.499031}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -30262,7 +30262,7 @@ GameObject:
   - component: {fileID: 953648682}
   - component: {fileID: 953648681}
   m_Layer: 13
-  m_Name: RoadExpansion2
+  m_Name: SpeedBoatBoost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30320,7 +30320,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: ROAD EXPANSION 2
+  m_Text: SPEED BOAT BOOST
 --- !u!222 &953648682
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -48346,7 +48346,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: COVE EXPANSION 1
+  m_Text: COVE EXPANSION
 --- !u!222 &1515251839
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -58310,7 +58310,7 @@ GameObject:
   - component: {fileID: 2061567997}
   - component: {fileID: 2061567996}
   m_Layer: 13
-  m_Name: ProductionSpeedIncrease
+  m_Name: CushionedCargo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -58368,7 +58368,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: +10% PRODUCTION RATE
+  m_Text: CUSHIONED CARGO
 --- !u!222 &2061567997
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -81378,7 +81378,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: KINGS BLESSING
+  m_Text: QUEENS BLESSING
 --- !u!222 &2143571564
 CanvasRenderer:
   m_ObjectHideFlags: 0

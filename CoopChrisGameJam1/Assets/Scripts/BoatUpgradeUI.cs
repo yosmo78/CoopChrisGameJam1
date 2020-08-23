@@ -5,81 +5,82 @@ using UnityEngine;
 
 public enum BoatButtonTypes
 {
-    RoadExpansion1,
-    RoadExpansion2,
+    CoveExpansion,
+    SpeedBoatBoost,
     InventoryIncrease,
-    SpeedIncrease,
+    BoatFactoryLine,
+    FactoryLineSpeedIncrease,
     CushionedCargo,
-    ProductionIncrease,
     AutoDelivery,
-    KingBlessing,
+    QueensBlessing,
     Exit
 }
 
 public class BoatUpgradeUI : MonoBehaviour
 {
-	public int RoadExpansion1Price = 50;
-    public int RoadExpansion2Price = 150;
+	public int CoveExpansionPrice = 50;
+    public int SpeedBoatBoostPrice = 150;
     public int InventoryIncreasePrice = 100;
-    public int SpeedIncreasePrice = 100;
-    public int CushionedCargoPrice = 300;
-    public int ProductionIncreasePrice = 250;
+    public int BoatFactoryLinePrice = 100;
+    public int FactoryLineSpeedIncreasePrice = 300;
+    public int CushionedCargoPrice = 250;
     public int AutoDeliveryPrice = 1000;
-    public int KingBlessingPrice = 9000;
+    public int QueensBlessingPrice = 9000;
 
-	public Button RoadExpansion1Button;
-	public Button RoadExpansion2Button;
+	public Button CoveExpansionButton;
+	public Button SpeedBoatBoostButton;
 	public Button InventoryIncreaseButton;
-    public Button SpeedIncreaseButton;
+    public Button BoatFactoryLineButton;
+    public Button FactoryLineSpeedIncreaseButton;
     public Button CushionedCargoButton;
-    public Button ProductionIncreaseButton;
     public Button AutoDeliveryButton;
-    public Button KingBlessingButton;
+    public Button QueensBlessingButton;
 
     public Button ExitButton;
 
     public Text storeMessage;
 
-    public GameObject Truck;
-    public GameObject TruckUI;
-    public GameObject UpgradeZone;
-    public GameObject hazardShortCut1;
-    public GameObject hazardShortCut2;
+    public GameObject Boat;
+    public GameObject BoatUI;
+    public GameObject UpgradeZoneOcean;
+    public GameObject CoveExpansionRocks;
+    public GameObject BoatFactoryLine;
+    public GameObject BoatFactoryLineBox; //maybe make child of BoatFactoryLine
 
     private float timeToAppear = 2f;
     private float timeWhenDisappear;
 
     public GameObject box;
 
-   	private static bool isRoadExpansion1Purchased = false;
-    private static bool isRoadExpansion2Purchased = false;
+   	private static bool isCoveExpansionPurchased = false;
+    private static bool isSpeedBoatBoostPurchased = false;
     private static bool isInventoryIncreaseMaxed = false;
-    private static bool isSpeedIncreasePurchased = false;
+    private static bool isBoatFactoryLinePurchased = false;
     private static bool isCushionedCargoPurchased = false;
-    private static bool isProductionIncreasePurchased = false;
+    private static bool isFactoryLineSpeedIncreasePurchased = false;
     private static bool isAutoDeliveryPurchased = false;
 
 
 	void Start()
     {
-        RoadExpansion1Button.onClick.AddListener(delegate {TaskWithParameters(TruckButtonTypes.RoadExpansion1); });
-        RoadExpansion2Button.onClick.AddListener(delegate {TaskWithParameters(TruckButtonTypes.RoadExpansion2); });
-        InventoryIncreaseButton.onClick.AddListener(delegate {TaskWithParameters(TruckButtonTypes.InventoryIncrease); });
-    	SpeedIncreaseButton.onClick.AddListener(delegate {TaskWithParameters(TruckButtonTypes.SpeedIncrease); });
-    	CushionedCargoButton.onClick.AddListener(delegate {TaskWithParameters(TruckButtonTypes.CushionedCargo); });
-    	ProductionIncreaseButton.onClick.AddListener(delegate {TaskWithParameters(TruckButtonTypes.ProductionIncrease); });
-    	AutoDeliveryButton.onClick.AddListener(delegate {TaskWithParameters(TruckButtonTypes.AutoDelivery); });
-    	KingBlessingButton.onClick.AddListener(delegate {TaskWithParameters(TruckButtonTypes.KingBlessing); });
-    	ExitButton.onClick.AddListener(delegate {TaskWithParameters(TruckButtonTypes.Exit); });
+        CoveExpansionButton.onClick.AddListener(delegate {TaskWithParameters(BoatButtonTypes.CoveExpansion); });
+        SpeedBoatBoostButton.onClick.AddListener(delegate {TaskWithParameters(BoatButtonTypes.SpeedBoatBoost); });
+        InventoryIncreaseButton.onClick.AddListener(delegate {TaskWithParameters(BoatButtonTypes.InventoryIncrease); });
+    	BoatFactoryLineButton.onClick.AddListener(delegate {TaskWithParameters(BoatButtonTypes.BoatFactoryLine); });
+    	FactoryLineSpeedIncreaseButton.onClick.AddListener(delegate {TaskWithParameters(BoatButtonTypes.FactoryLineSpeedIncrease); });
+    	CushionedCargoButton.onClick.AddListener(delegate {TaskWithParameters(BoatButtonTypes.CushionedCargo); });
+    	AutoDeliveryButton.onClick.AddListener(delegate {TaskWithParameters(BoatButtonTypes.AutoDelivery); });
+    	QueensBlessingButton.onClick.AddListener(delegate {TaskWithParameters(BoatButtonTypes.CushionedCargo); });
+    	ExitButton.onClick.AddListener(delegate {TaskWithParameters(BoatButtonTypes.Exit); });
 
-    	RoadExpansion1Button.GetComponentInChildren<Text>().text = "$"+RoadExpansion1Price;
-    	RoadExpansion2Button.GetComponentInChildren<Text>().text = "$"+RoadExpansion2Price;
+    	CoveExpansionButton.GetComponentInChildren<Text>().text = "$"+CoveExpansionPrice;
+    	SpeedBoatBoostButton.GetComponentInChildren<Text>().text = "$"+SpeedBoatBoostPrice;
     	InventoryIncreaseButton.GetComponentInChildren<Text>().text = "$"+InventoryIncreasePrice;
-    	SpeedIncreaseButton.GetComponentInChildren<Text>().text = "$"+SpeedIncreasePrice;
+    	BoatFactoryLineButton.GetComponentInChildren<Text>().text = "$"+BoatFactoryLinePrice;
+    	FactoryLineSpeedIncreaseButton.GetComponentInChildren<Text>().text = "$"+FactoryLineSpeedIncreasePrice;
     	CushionedCargoButton.GetComponentInChildren<Text>().text = "$"+CushionedCargoPrice;
-    	ProductionIncreaseButton.GetComponentInChildren<Text>().text = "$"+ProductionIncreasePrice;
     	AutoDeliveryButton.GetComponentInChildren<Text>().text = "$"+AutoDeliveryPrice;
-    	KingBlessingButton.GetComponentInChildren<Text>().text = "$"+KingBlessingPrice;
+    	QueensBlessingButton.GetComponentInChildren<Text>().text = "$"+QueensBlessingPrice;
     }
 
     void Update()
@@ -105,24 +106,24 @@ public class BoatUpgradeUI : MonoBehaviour
         timeWhenDisappear = Time.time + timeToAppear;
     }
 
-	public void TaskWithParameters(TruckButtonTypes tbt)
+	public void TaskWithParameters(BoatButtonTypes tbt)
     {
         //Output this to console when the Button2 is clicked
         switch(tbt)
         {
-        	case TruckButtonTypes.RoadExpansion1:
+        	case BoatButtonTypes.CoveExpansion:
         		{
-        			if(PlayerStats.money >= RoadExpansion1Price && !isRoadExpansion1Purchased)
+        			if(PlayerStats.money >= CoveExpansionPrice && !isCoveExpansionPurchased)
                     {
-                        hazardShortCut1.SetActive(false);
-                        isRoadExpansion1Purchased = true;
-                        PlayerStats.money -= RoadExpansion1Price;
-                        RoadExpansion1Button.GetComponent<Image>().color = new Color32(255,0,0,100);
-                        RoadExpansion1Button.GetComponentInChildren<Text>().text = "DONE";
+                        CoveExpansionRocks.SetActive(false);
+                        isCoveExpansionPurchased = true;
+                        PlayerStats.money -= CoveExpansionPrice;
+                        CoveExpansionButton.GetComponent<Image>().color = new Color32(255,0,0,100);
+                        CoveExpansionButton.GetComponentInChildren<Text>().text = "DONE";
                     }
                     else
                     {
-                    	if(isRoadExpansion1Purchased)
+                    	if(isCoveExpansionPurchased)
                     	{
                     		SetStoreText("ALREADY PURCHASED");
                     	}
@@ -133,19 +134,19 @@ public class BoatUpgradeUI : MonoBehaviour
                     }
         		}
         		break;
-        	case TruckButtonTypes.RoadExpansion2:
+        	case BoatButtonTypes.SpeedBoatBoost:
         		{
-        			if(PlayerStats.money >= RoadExpansion2Price && !isRoadExpansion2Purchased)
+        			if(PlayerStats.money >= SpeedBoatBoostPrice && !isSpeedBoatBoostPurchased)
                     {
-                        hazardShortCut2.SetActive(false);
-                        isRoadExpansion2Purchased = true;
-                        PlayerStats.money -= RoadExpansion2Price;
-                        RoadExpansion2Button.GetComponent<Image>().color = new Color32(255,0,0,100);
-                        RoadExpansion2Button.GetComponentInChildren<Text>().text = "DONE";
+                        Boat.GetComponent<Movement>().maxVelocity *= 1.1f;
+                        isSpeedBoatBoostPurchased = true;
+                        PlayerStats.money -= SpeedBoatBoostPrice;
+                        SpeedBoatBoostButton.GetComponent<Image>().color = new Color32(255,0,0,100);
+                        SpeedBoatBoostButton.GetComponentInChildren<Text>().text = "DONE";
                     }
                     else
                     {
-                    	if(isRoadExpansion2Purchased)
+                    	if(isSpeedBoatBoostPurchased)
                     	{
                     		SetStoreText("ALREADY PURCHASED");
                     	}
@@ -156,7 +157,7 @@ public class BoatUpgradeUI : MonoBehaviour
                     }
         		}
         		break;
-        	case TruckButtonTypes.InventoryIncrease:
+        	case BoatButtonTypes.InventoryIncrease:
         		{
 
         			if(!isInventoryIncreaseMaxed)
@@ -164,10 +165,10 @@ public class BoatUpgradeUI : MonoBehaviour
         				if(PlayerStats.money >= InventoryIncreasePrice)
         				{
         					PlayerStats.money -= InventoryIncreasePrice;
-        					PlayerStats.TRUCK_MAX_INVENTORY += 5;
-        					++PlayerStats.amountTruckInventoryUpgrades;
-        					InventoryIncreasePrice += 100;
-        					if(PlayerStats.amountTruckInventoryUpgrades == PlayerStats.MAX_AMOUNT_TRUCK_INVENTORY_UPGRADES)
+        					PlayerStats.BOAT_MAX_INVENTORY += 5;
+        					++PlayerStats.amountBoatInventoryUpgrades;
+        					InventoryIncreasePrice += 200;
+        					if(PlayerStats.amountBoatInventoryUpgrades == PlayerStats.MAX_AMOUNT_BOAT_INVENTORY_UPGRADES)
         					{
         						isInventoryIncreaseMaxed = true;
         						InventoryIncreaseButton.GetComponent<Image>().color = new Color32(255,0,0,100);
@@ -183,23 +184,22 @@ public class BoatUpgradeUI : MonoBehaviour
         			{
         				SetStoreText("MAX INVENTORY");
         			}
-        			//need to modify text length above vehicles in main scene
         		}
         		break;
-    		case TruckButtonTypes.SpeedIncrease:
+    		case BoatButtonTypes.BoatFactoryLine:
         		{
 
-        			if(PlayerStats.money >= SpeedIncreasePrice && !isSpeedIncreasePurchased)
+        			if(PlayerStats.money >= BoatFactoryLinePrice && !isBoatFactoryLinePurchased)
                     {
-                    	Truck.GetComponent<Movement>().maxVelocity *= 1.1f;
-                        isSpeedIncreasePurchased = true;
-                        PlayerStats.money -= SpeedIncreasePrice;
-                        SpeedIncreaseButton.GetComponent<Image>().color = new Color32(255,0,0,100);
-                        SpeedIncreaseButton.GetComponentInChildren<Text>().text = "DONE";
+                    	BoatFactoryLine.SetActive(true);
+                        isBoatFactoryLinePurchased = true;
+                        PlayerStats.money -= BoatFactoryLinePrice;
+                        BoatFactoryLineButton.GetComponent<Image>().color = new Color32(255,0,0,100);
+                        BoatFactoryLineButton.GetComponentInChildren<Text>().text = "DONE";
                     }
                     else
                     {
-                    	if(isSpeedIncreasePurchased)
+                    	if(isBoatFactoryLinePurchased)
                     	{
                     		SetStoreText("ALREADY PURCHASED");
                     	}
@@ -210,11 +210,35 @@ public class BoatUpgradeUI : MonoBehaviour
                     }
         		}
     			break;
-    		case TruckButtonTypes.CushionedCargo:
+    		case BoatButtonTypes.FactoryLineSpeedIncrease:
         		{
+        			if(PlayerStats.money >= FactoryLineSpeedIncreasePrice && !isFactoryLineSpeedIncreasePurchased)
+                    {
+                        BoatFactoryLineBox.GetComponent<Animator>().speed = 2.0f;
+                        isFactoryLineSpeedIncreasePurchased = true;
+                        PlayerStats.money -= FactoryLineSpeedIncreasePrice;
+                        FactoryLineSpeedIncreaseButton.GetComponent<Image>().color = new Color32(255,0,0,100);
+                        FactoryLineSpeedIncreaseButton.GetComponentInChildren<Text>().text = "DONE";
+                    }
+                    else
+                    {
+                        if(isFactoryLineSpeedIncreasePurchased)
+                        {
+                            SetStoreText("ALREADY PURCHASED");
+                        }
+                        else
+                        {
+                            SetStoreText("NOT ENOUGH MONEY");
+                        }
+                    }
+        		}
+    			break;
+    		case BoatButtonTypes.CushionedCargo:
+        		{
+
         			if(PlayerStats.money >= CushionedCargoPrice && !isCushionedCargoPurchased)
                     {
-                    	PlayerStats.BREAKING_VELOCITY = 50;
+                        PlayerStats.BOAT_BREAKING_VELOCITY = 50;
                         isCushionedCargoPurchased = true;
                         PlayerStats.money -= CushionedCargoPrice;
                         CushionedCargoButton.GetComponent<Image>().color = new Color32(255,0,0,100);
@@ -222,59 +246,35 @@ public class BoatUpgradeUI : MonoBehaviour
                     }
                     else
                     {
-                    	if(isCushionedCargoPurchased)
-                    	{
-                    		SetStoreText("ALREADY PURCHASED");
-                    	}
-                    	else
-                    	{
-                        	SetStoreText("NOT ENOUGH MONEY");
+                        if(isCushionedCargoPurchased)
+                        {
+                            SetStoreText("ALREADY PURCHASED");
+                        }
+                        else
+                        {
+                            SetStoreText("NOT ENOUGH MONEY");
                         }
                     }
         		}
     			break;
-    		case TruckButtonTypes.ProductionIncrease:
-        		{
-
-        			if(PlayerStats.money >= ProductionIncreasePrice && !isProductionIncreasePurchased)
-                    {
-        				box.GetComponent<Animator>().speed = 1.1f;
-                        isProductionIncreasePurchased = true;
-                        PlayerStats.money -= ProductionIncreasePrice;
-                        ProductionIncreaseButton.GetComponent<Image>().color = new Color32(255,0,0,100);
-                        ProductionIncreaseButton.GetComponentInChildren<Text>().text = "DONE";
-                    }
-                    else
-                    {
-                    	if(isProductionIncreasePurchased)
-                    	{
-                    		SetStoreText("ALREADY PURCHASED");
-                    	}
-                    	else
-                    	{
-                        	SetStoreText("NOT ENOUGH MONEY");
-                        }
-                    }
-        		}
-    			break;
-    		case TruckButtonTypes.AutoDelivery:
+    		case BoatButtonTypes.AutoDelivery:
         		{
         			SetStoreText("TO BE IMPLEMENTED");
         		}
     			break;
-    		case TruckButtonTypes.KingBlessing:
+    		case BoatButtonTypes.QueensBlessing:
         		{
-        			if(PlayerStats.money >= KingBlessingPrice && !PlayerStats.isKingBlessingPurchased)
+        			if(PlayerStats.money >= QueensBlessingPrice && !PlayerStats.isQueensBlessingPurchased)
                     {
-                        PlayerStats.isKingBlessingPurchased = true;
-                        PlayerStats.updateTruckInventory(0);
-                        PlayerStats.money -= KingBlessingPrice;
-                        KingBlessingButton.GetComponent<Image>().color = new Color32(255,0,0,100);
-                        KingBlessingButton.GetComponentInChildren<Text>().text = "DONE";
+                        PlayerStats.isQueensBlessingPurchased = true;
+                        PlayerStats.updateBoatInventory(0);
+                        PlayerStats.money -= QueensBlessingPrice;
+                        QueensBlessingButton.GetComponent<Image>().color = new Color32(255,0,0,100);
+                        QueensBlessingButton.GetComponentInChildren<Text>().text = "DONE";
                     }
                     else
                     {
-                    	if(PlayerStats.isKingBlessingPurchased)
+                    	if(PlayerStats.isQueensBlessingPurchased)
                     	{
                     		SetStoreText("ALREADY PURCHASED");
                     	}
@@ -285,12 +285,12 @@ public class BoatUpgradeUI : MonoBehaviour
                     }
         		}
     			break;
-    		case TruckButtonTypes.Exit:
+    		case BoatButtonTypes.Exit:
     			{
 
-    				Truck.SetActive(true);
-    				TruckUI.SetActive(false);
-    				UpgradeZone.GetComponent<UpgradeZoneCity>().inMenu = false;
+    				Boat.SetActive(true);
+    				BoatUI.SetActive(false);
+    				UpgradeZoneOcean.GetComponent<UpgradeZoneOcean>().inMenu = false;
     			}
     			break;
         	default:

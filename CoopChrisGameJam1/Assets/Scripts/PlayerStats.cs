@@ -38,9 +38,12 @@ public class PlayerStats : MonoBehaviour
 
 	public static int money = 0;
 
-    public static int BREAKING_VELOCITY = 2;
+    public static int TRUCK_BREAKING_VELOCITY = 2;
+    public static int BOAT_BREAKING_VELOCITY = 2;
+    public static int TANK_BREAKING_VELOCITY = 2;
 
     public static bool isKingBlessingPurchased = false;
+    public static bool isQueensBlessingPurchased = false;
 
     public static bool truckInventoryHas(int amount)
     {

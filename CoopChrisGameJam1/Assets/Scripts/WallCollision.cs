@@ -10,15 +10,18 @@ public class WallCollision : MonoBehaviour
     void OnCollisionEnter2D(Collision2D col)
     {
 
-        if(col.relativeVelocity.magnitude > PlayerStats.BREAKING_VELOCITY)
+        
+        if((col.gameObject.ToString() == "Truck" && col.relativeVelocity.magnitude > PlayerStats.TRUCK_BREAKING_VELOCITY) ||
+        (col.gameObject.ToString() == "Boat" && col.relativeVelocity.magnitude > PlayerStats.BOAT_BREAKING_VELOCITY) ||
+        (col.gameObject.ToString() == "Tank" && col.relativeVelocity.magnitude > PlayerStats.TANK_BREAKING_VELOCITY) )
         {	
-        	if(CameraFollow.following == CameraFollow.truck) 
+        	if(col.gameObject.ToString() == "Truck") 
     		{
     			Rigidbody2D rb = GameObject.Find("Truck").GetComponent<Movement>().rb;
     			rb.velocity = slowDown*rb.velocity.normalized;
     			PlayerStats.updateTruckInventory(-1);
     		}
-    		else if(CameraFollow.following == CameraFollow.boat) 
+    		else if(col.gameObject.ToString() == "Boat") 
     		{
     			Rigidbody2D rb = GameObject.Find("Boat").GetComponent<Movement>().rb;
     			rb.velocity = slowDown*rb.velocity.normalized;
@@ -29,7 +32,7 @@ public class WallCollision : MonoBehaviour
     				PlayerStats.boatInventory = 0;
     			}
     		}
-    		else if(CameraFollow.following == CameraFollow.tank) 
+    		else if(col.gameObject.ToString() == "Tank") 
     		{
     			Rigidbody2D rb = GameObject.Find("Tank").GetComponent<Movement>().rb;
     			rb.velocity = slowDown*rb.velocity.normalized;
