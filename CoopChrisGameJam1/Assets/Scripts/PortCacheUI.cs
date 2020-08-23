@@ -139,9 +139,15 @@ public class PortCacheUI : MonoBehaviour
                     }
                     else
                     {
-                        SetStoreText("TRUCK INVENTORY EMPTY");
+                        if(PlayerStats.truckInventoryHas(1))
+                        {
+                            SetStoreText("PORT INVENTORY FULL");
+                        }
+                        else
+                        {
+                            SetStoreText("TRUCK INVENTORY EMPTY");
+                        }
                     }
-        			//need to modify text length above vehicles in main scene
         		}
         		break;
     		case PortButtonTypes.WithdrawBoatInventory:
@@ -153,7 +159,14 @@ public class PortCacheUI : MonoBehaviour
                     }
                     else
                     {
-                        SetStoreText("PORT INVENTORY EMPTY");
+                        if(PlayerStats.isBoatInventoryFull())
+                        {
+                            SetStoreText("BOAT INVENTORY FULL");
+                        }
+                        else
+                        {
+                            SetStoreText("PORT INVENTORY EMPTY");
+                        }
                     }
         		}
     			break;
