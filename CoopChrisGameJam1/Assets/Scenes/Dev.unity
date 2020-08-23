@@ -2803,7 +2803,7 @@ GameObject:
   - component: {fileID: 198833691}
   - component: {fileID: 198833690}
   m_Layer: 13
-  m_Name: SpeedIncrease
+  m_Name: SpeedBoatBoost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2861,7 +2861,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: +10% SPEED INCREASE
+  m_Text: SPEED BOAT BOOST
 --- !u!222 &198833691
 CanvasRenderer:
   m_ObjectHideFlags: 0
