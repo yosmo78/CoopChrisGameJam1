@@ -9,6 +9,7 @@ public class PlayerStats : MonoBehaviour
     public const int STARTING_BUILDING_MAX_INVENTORY = 25;
 
     public static int MAX_AMOUNT_TRUCK_INVENTORY_UPGRADES = 19;
+    public static int amountTruckInventoryUpgrades = 0;
 
     public static int TRUCK_MAX_INVENTORY = STARTING_MAX_INVENTORY;
     public static int BOAT_MAX_INVENTORY = STARTING_MAX_INVENTORY;
@@ -27,7 +28,7 @@ public class PlayerStats : MonoBehaviour
 
 	public static int money = 0;
 
-    
+    public static int BREAKING_VELOCITY = 2;
 
     public static bool truckInventoryHas(int amount)
     {

@@ -27,8 +27,6 @@ public class TruckUpgradeUI : MonoBehaviour
     public int AutoDeliveryPrice = 1000;
     public int KingBlessingPrice = 9000;
 
-    public int InventoryIncreaseBasePrice = 100;
-
 	public Button RoadExpansion1Button;
 	public Button RoadExpansion2Button;
 	public Button InventoryIncreaseButton;
@@ -55,7 +53,7 @@ public class TruckUpgradeUI : MonoBehaviour
 
    	private static bool isRoadExpansion1Purchased = false;
     private static bool isRoadExpansion2Purchased = false;
-    private static bool isInventoryIncreasePurchased = false;
+    private static bool isInventoryIncreaseMaxed = false;
     private static bool isSpeedIncreasePurchased = false;
     private static bool isCushionedCargoPurchased = false;
     private static bool isProductionIncreasePurchased = false;
@@ -87,7 +85,14 @@ public class TruckUpgradeUI : MonoBehaviour
 
     void Update()
     {
-
+    	if(!isInventoryIncreaseMaxed)
+    	{
+    		InventoryIncreaseButton.GetComponentInChildren<Text>().text = "$"+InventoryIncreasePrice;
+    	}
+    	else
+    	{
+    		InventoryIncreaseButton.GetComponentInChildren<Text>().text = "DONE";
+    	}
         if(storeMessage.text != "" && (Time.time >= timeWhenDisappear))
         {
             storeMessage.text = "";
@@ -154,8 +159,31 @@ public class TruckUpgradeUI : MonoBehaviour
         		break;
         	case TruckButtonTypes.InventoryIncrease:
         		{
-        			Debug.Log("InventoryIncrease purchased");
-        			PlayerStats.TRUCK_MAX_INVENTORY += 5;
+
+        			if(!isInventoryIncreaseMaxed)
+        			{
+        				if(PlayerStats.money >= InventoryIncreasePrice)
+        				{
+        					PlayerStats.money -= InventoryIncreasePrice;
+        					PlayerStats.TRUCK_MAX_INVENTORY += 5;
+        					++PlayerStats.amountTruckInventoryUpgrades;
+        					InventoryIncreasePrice += 100;
+        					if(PlayerStats.amountTruckInventoryUpgrades == PlayerStats.MAX_AMOUNT_TRUCK_INVENTORY_UPGRADES)
+        					{
+        						isInventoryIncreaseMaxed = true;
+        						InventoryIncreaseButton.GetComponent<Image>().color = new Color32(255,0,0,100);
+                       	 		InventoryIncreaseButton.GetComponentInChildren<Text>().text = "DONE";
+        					}
+        				}
+        				else
+        				{
+        					SetStoreText("NOT ENOUGH MONEY");
+        				}
+        			}
+        			else
+        			{
+        				SetStoreText("MAX INVENTORY");
+        			}
         			//need to modify text length above vehicles in main scene
         		}
         		break;
