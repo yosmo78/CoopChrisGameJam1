@@ -20,11 +20,11 @@ public class PortCacheUI : MonoBehaviour
     public int BuyPirateMedallionPrice = 9999;
     
 
-	public Button SellPortInventoryButton;
-	public Button PortInventoryIncreaseButton;
-	public Button DepositTruckInventoryButton;
-    public Button WithdrawBoatInventoryButton;
-    public Button BuyPirateMedallionButton;
+	public Button SellPortInventoryButton = null;
+	public Button PortInventoryIncreaseButton = null;
+	public Button DepositTruckInventoryButton = null;
+    public Button WithdrawBoatInventoryButton = null;
+    public Button BuyPirateMedallionButton = null;
 
     public Button ExitButton;
 
@@ -35,8 +35,10 @@ public class PortCacheUI : MonoBehaviour
     public Text storeMessage;
 
     public GameObject Truck;
+    public GameObject Boat;
     public GameObject TruckPortUI;
     public GameObject PortCacheZone;
+    public GameObject PortCacheBoatZone;
 
     private float timeToAppear = 2f;
     private float timeWhenDisappear;
@@ -63,6 +65,12 @@ public class PortCacheUI : MonoBehaviour
         TruckInventoryText.text = PlayerStats.truckInventory + ":" + PlayerStats.TRUCK_MAX_INVENTORY;
         BoatInventoryText.text = PlayerStats.boatInventory + ":" + PlayerStats.BOAT_MAX_INVENTORY;
         storeMessage.text = "";
+
+        //if(!PortCacheBoatZone.GetComponent<PortCacheBoatZone>().inMenu )
+            WithdrawBoatInventoryButton.interactable = false;
+
+        //if(!PortCacheZone.GetComponent<PortCacheZone>().inMenu )
+            DepositTruckInventoryButton.interactable = false;
     }
 
 
@@ -177,10 +185,19 @@ public class PortCacheUI : MonoBehaviour
     			break;
     		case PortButtonTypes.Exit:
     			{
+                    if(PortCacheZone.GetComponent<PortCacheZone>().inMenu )
+                    {
+                        Truck.SetActive(true);//maybe not set truck to inactive but just re-enable Movement script
+                        PortCacheZone.GetComponent<PortCacheZone>().inMenu = false;
+                    }
 
-    				Truck.SetActive(true); //maybe not set truck to inactive but just re-enable Movement script
-    				TruckPortUI.SetActive(false);
-    				PortCacheZone.GetComponent<PortCacheZone>().inMenu = false;
+                    if(PortCacheBoatZone.GetComponent<PortCacheBoatZone>().inMenu)
+                    {
+                        Boat.SetActive(true);
+                        PortCacheBoatZone.GetComponent<PortCacheBoatZone>().inMenu = false;
+                    }
+
+                    TruckPortUI.SetActive(false);
     			}
     			break;
         	default:

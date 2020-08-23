@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PortCacheZone : MonoBehaviour
+public class PortCacheBoatZone : MonoBehaviour
 {
 
 	public GameObject TruckPortUI;
-	public GameObject EventSystem;
-	public GameObject Truck;
+    public GameObject EventSystem;
+	public GameObject Boat;
 
 	bool inZone = false;
 	public bool inMenu = false;
@@ -33,10 +33,10 @@ public class PortCacheZone : MonoBehaviour
     	if(!inMenu && !inZone)
     	{
     		inMenu = true;
-    		Truck.GetComponent<Movement>().rb.velocity = new Vector3(0f,0f,0f);
-    		Truck.SetActive(false); //maybe just disable Movement script
+    		Boat.GetComponent<Movement>().rb.velocity = new Vector3(0f,0f,0f);
+    		Boat.SetActive(false); //maybe just disable Movement script
     		TruckPortUI.SetActive(true);
-    		EventSystem.GetComponent<PortCacheUI>().DepositTruckInventoryButton.interactable = true;
+            EventSystem.GetComponent<PortCacheUI>().WithdrawBoatInventoryButton.interactable = true;
     	}
     	inZone = true;
     }
@@ -45,7 +45,7 @@ public class PortCacheZone : MonoBehaviour
     {
     	if(!inMenu)
     	{
-    		EventSystem.GetComponent<PortCacheUI>().DepositTruckInventoryButton.interactable = false;
+            EventSystem.GetComponent<PortCacheUI>().WithdrawBoatInventoryButton.interactable = false;
     		inZone = false;
     	}	
     }

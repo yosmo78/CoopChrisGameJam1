@@ -138,7 +138,7 @@ public class BoatUpgradeUI : MonoBehaviour
         		{
         			if(PlayerStats.money >= SpeedBoatBoostPrice && !isSpeedBoatBoostPurchased)
                     {
-                        Boat.GetComponent<Movement>().maxVelocity *= 1.1f;
+                        Boat.GetComponent<Movement>().maxVelocity *= 1.2f;
                         isSpeedBoatBoostPurchased = true;
                         PlayerStats.money -= SpeedBoatBoostPrice;
                         SpeedBoatBoostButton.GetComponent<Image>().color = new Color32(255,0,0,100);
@@ -212,7 +212,7 @@ public class BoatUpgradeUI : MonoBehaviour
     			break;
     		case BoatButtonTypes.FactoryLineSpeedIncrease:
         		{
-        			if(PlayerStats.money >= FactoryLineSpeedIncreasePrice && !isFactoryLineSpeedIncreasePurchased)
+        			if(PlayerStats.money >= FactoryLineSpeedIncreasePrice && !isFactoryLineSpeedIncreasePurchased && isBoatFactoryLinePurchased)
                     {
                         BoatFactoryLineBox.GetComponent<Animator>().speed = 2.0f;
                         isFactoryLineSpeedIncreasePurchased = true;
@@ -222,13 +222,20 @@ public class BoatUpgradeUI : MonoBehaviour
                     }
                     else
                     {
-                        if(isFactoryLineSpeedIncreasePurchased)
+                        if(isBoatFactoryLinePurchased)
                         {
-                            SetStoreText("ALREADY PURCHASED");
+                            if(isFactoryLineSpeedIncreasePurchased)
+                            {
+                                SetStoreText("ALREADY PURCHASED");
+                            }
+                            else
+                            {
+                                SetStoreText("NOT ENOUGH MONEY");
+                            }
                         }
                         else
                         {
-                            SetStoreText("NOT ENOUGH MONEY");
+                            SetStoreText("PURCHASE FACTORY LINE FIRST");
                         }
                     }
         		}
