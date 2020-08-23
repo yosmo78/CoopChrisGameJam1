@@ -48,6 +48,26 @@ public class PlayerStats : MonoBehaviour
         return false;
     }
 
+    public static bool isBoatInventoryFull()
+    {
+        return boatInventory == BOAT_MAX_INVENTORY;
+    }
+
+
+    public static void updateBoatInventory(int amount)
+    {
+        boatInventory = boatInventory + amount;
+        if(boatInventory < 0)
+        {
+            boatInventory = 0;
+        }
+        else if(boatInventory > BOAT_MAX_INVENTORY)
+        {
+            boatInventory = BOAT_MAX_INVENTORY;
+        }
+
+    }
+
 	public static void updateTruckInventory(int amount)
 	{
 		truckInventory = truckInventory + amount;

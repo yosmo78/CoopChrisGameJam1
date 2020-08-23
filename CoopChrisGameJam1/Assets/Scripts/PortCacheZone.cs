@@ -5,7 +5,7 @@ using UnityEngine;
 public class PortCacheZone : MonoBehaviour
 {
 
-	public GameObject TruckUpgradeUI;
+	public GameObject TruckPortUI;
 	public GameObject Truck;
 
 	bool inZone = false;
@@ -33,8 +33,8 @@ public class PortCacheZone : MonoBehaviour
     	{
     		inMenu = true;
     		Truck.GetComponent<Movement>().rb.velocity = new Vector3(0f,0f,0f);
-    		Truck.SetActive(false);
-    		TruckUpgradeUI.SetActive(true);
+    		Truck.SetActive(false); //maybe just disable Movement script
+    		TruckPortUI.SetActive(true);
     	}
     	inZone = true;
     }
