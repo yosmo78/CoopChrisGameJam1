@@ -6,6 +6,7 @@ TagManager:
   tags:
   - truckBack
   - truckFront
+  - Music
   layers:
   - Default
   - TransparentFX

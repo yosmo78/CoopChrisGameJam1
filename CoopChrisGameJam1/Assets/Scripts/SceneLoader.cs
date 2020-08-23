@@ -9,7 +9,7 @@ public class SceneLoader : MonoBehaviour
     public void Game()
     {
 
-        SceneManager.LoadScene("CoopChrisGameJam1", LoadSceneMode.Single);
+        SceneManager.LoadScene("Level", LoadSceneMode.Single);
 
     }
 
