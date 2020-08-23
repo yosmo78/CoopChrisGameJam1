@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 67cf38552871e410ea1f1d1c57795347
   - enabled: 1
+    path: Assets/Scenes/About.unity
+    guid: e9a6a4ceacbdf430894eaf57ee54d191
+  - enabled: 1
     path: Assets/Scenes/CoopChrisGameJam1.unity
     guid: 452af935ce0ab4d9188e8a4a09a377dc
   m_configObjects: {}

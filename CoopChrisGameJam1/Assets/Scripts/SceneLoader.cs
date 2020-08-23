@@ -6,10 +6,24 @@ using UnityEngine.SceneManagement;
 public class SceneLoader : MonoBehaviour
 {
 
-    void Game()
+    public void Game()
     {
 
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene("CoopChrisGameJam1", LoadSceneMode.Single);
+
+    }
+
+    public void MainMenu()
+    {
+
+        SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
+
+    }
+
+    public void About()
+    {
+
+        SceneManager.LoadScene("About", LoadSceneMode.Single);
 
     }
 
