@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UpgradeZoneCity : MonoBehaviour
+public class PortCacheZone : MonoBehaviour
 {
 
 	public GameObject TruckUpgradeUI;
