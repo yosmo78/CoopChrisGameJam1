@@ -5,12 +5,13 @@ using UnityEngine;
 public class Audio : MonoBehaviour
 {
 
-    public AudioSource gameSound;
-
-    void Start()
+    void Awake ()
     {
+        GameObject[] objs = GameObject.FindGameObjectsWithTag("Music");
 
-        gameSound.Play();
+        if(objs.Length > 1) Destroy(this.gameObject);
+
+        DontDestroyOnLoad(this.gameObject);
 
     }
 
