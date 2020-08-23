@@ -189,7 +189,14 @@ public class TruckUpgradeUI : MonoBehaviour
         		break;
     		case TruckButtonTypes.SpeedIncrease:
         		{
-        			Debug.Log("SpeedIncrease purchased");
+        			if(PlayerStats.money >= SpeedIncreasePrice && !isSpeedIncreasePurchased)
+        			{
+        				Debug.Log("SpeedIncrease purchased");
+        			}
+        			else
+        			{
+        				SetStoreText("MAX INVENTORY");
+        			}
         		}
     			break;
     		case TruckButtonTypes.CushionedCargo:
