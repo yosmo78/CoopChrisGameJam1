@@ -5008,11 +5008,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df166575b4eeab7408d057a7832fac6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: []
-  emptyTruckBack: {fileID: 90220980948575836, guid: 20158d150063544cc856043663ed7e84, type: 3}
-  emptyTruckFront: {fileID: -1853980493220139144, guid: 20158d150063544cc856043663ed7e84, type: 3}
-  fullTruckBack: {fileID: -4388184936013485698, guid: 20158d150063544cc856043663ed7e84, type: 3}
-  fullTruckFront: {fileID: 1896011896815899561, guid: 20158d150063544cc856043663ed7e84, type: 3}
 --- !u!1 &8307792236941783676
 GameObject:
   m_ObjectHideFlags: 0
