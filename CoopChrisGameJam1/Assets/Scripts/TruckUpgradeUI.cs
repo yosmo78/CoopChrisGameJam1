@@ -49,7 +49,7 @@ public class TruckUpgradeUI : MonoBehaviour
     private float timeToAppear = 2f;
     private float timeWhenDisappear;
 
-
+    public GameObject box;
 
    	private static bool isRoadExpansion1Purchased = false;
     private static bool isRoadExpansion2Purchased = false;
@@ -58,7 +58,6 @@ public class TruckUpgradeUI : MonoBehaviour
     private static bool isCushionedCargoPurchased = false;
     private static bool isProductionIncreasePurchased = false;
     private static bool isAutoDeliveryPurchased = false;
-    private static bool isKingBlessingPurchased = false;
 
 
 	void Start()
@@ -189,34 +188,101 @@ public class TruckUpgradeUI : MonoBehaviour
         		break;
     		case TruckButtonTypes.SpeedIncrease:
         		{
+
         			if(PlayerStats.money >= SpeedIncreasePrice && !isSpeedIncreasePurchased)
-        			{
-        				Debug.Log("SpeedIncrease purchased");
-        			}
-        			else
-        			{
-        				SetStoreText("MAX INVENTORY");
-        			}
+                    {
+                    	Truck.GetComponent<Movement>().maxVelocity *= 1.1f;
+                        isSpeedIncreasePurchased = true;
+                        PlayerStats.money -= SpeedIncreasePrice;
+                        SpeedIncreaseButton.GetComponent<Image>().color = new Color32(255,0,0,100);
+                        SpeedIncreaseButton.GetComponentInChildren<Text>().text = "DONE";
+                    }
+                    else
+                    {
+                    	if(isSpeedIncreasePurchased)
+                    	{
+                    		SetStoreText("ALREADY PURCHASED");
+                    	}
+                    	else
+                    	{
+                        	SetStoreText("NOT ENOUGH MONEY");
+                        }
+                    }
         		}
     			break;
     		case TruckButtonTypes.CushionedCargo:
         		{
-        			Debug.Log("CushionedCargo purchased");
+        			if(PlayerStats.money >= CushionedCargoPrice && !isCushionedCargoPurchased)
+                    {
+                    	PlayerStats.BREAKING_VELOCITY = 50;
+                        isCushionedCargoPurchased = true;
+                        PlayerStats.money -= CushionedCargoPrice;
+                        CushionedCargoButton.GetComponent<Image>().color = new Color32(255,0,0,100);
+                        CushionedCargoButton.GetComponentInChildren<Text>().text = "DONE";
+                    }
+                    else
+                    {
+                    	if(isCushionedCargoPurchased)
+                    	{
+                    		SetStoreText("ALREADY PURCHASED");
+                    	}
+                    	else
+                    	{
+                        	SetStoreText("NOT ENOUGH MONEY");
+                        }
+                    }
         		}
     			break;
     		case TruckButtonTypes.ProductionIncrease:
         		{
-        			Debug.Log("ProductionIncrease purchased");
+
+        			if(PlayerStats.money >= ProductionIncreasePrice && !isProductionIncreasePurchased)
+                    {
+        				box.GetComponent<Animator>().speed = 1.1f;
+                        isProductionIncreasePurchased = true;
+                        PlayerStats.money -= ProductionIncreasePrice;
+                        ProductionIncreaseButton.GetComponent<Image>().color = new Color32(255,0,0,100);
+                        ProductionIncreaseButton.GetComponentInChildren<Text>().text = "DONE";
+                    }
+                    else
+                    {
+                    	if(isProductionIncreasePurchased)
+                    	{
+                    		SetStoreText("ALREADY PURCHASED");
+                    	}
+                    	else
+                    	{
+                        	SetStoreText("NOT ENOUGH MONEY");
+                        }
+                    }
         		}
     			break;
     		case TruckButtonTypes.AutoDelivery:
         		{
-        			Debug.Log("AutoDelivery purchased");
+        			SetStoreText("TO BE IMPLEMENTED");
         		}
     			break;
     		case TruckButtonTypes.KingBlessing:
         		{
-        			Debug.Log("KingBlessing purchased");
+        			if(PlayerStats.money >= KingBlessingPrice && !PlayerStats.isKingBlessingPurchased)
+                    {
+                        PlayerStats.isKingBlessingPurchased = true;
+                        PlayerStats.updateTruckInventory(0);
+                        PlayerStats.money -= KingBlessingPrice;
+                        KingBlessingButton.GetComponent<Image>().color = new Color32(255,0,0,100);
+                        KingBlessingButton.GetComponentInChildren<Text>().text = "DONE";
+                    }
+                    else
+                    {
+                    	if(PlayerStats.isKingBlessingPurchased)
+                    	{
+                    		SetStoreText("ALREADY PURCHASED");
+                    	}
+                    	else
+                    	{
+                        	SetStoreText("NOT ENOUGH MONEY");
+                        }
+                    }
         		}
     			break;
     		case TruckButtonTypes.Exit:

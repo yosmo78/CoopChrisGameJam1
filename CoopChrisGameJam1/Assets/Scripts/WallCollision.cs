@@ -11,11 +11,7 @@ public class WallCollision : MonoBehaviour
     {
 
         if(col.relativeVelocity.magnitude > PlayerStats.BREAKING_VELOCITY)
-        {	Debug.Log("Over 2!");
-
-
-
-
+        {	
         	if(CameraFollow.following == CameraFollow.truck) 
     		{
     			Rigidbody2D rb = GameObject.Find("Truck").GetComponent<Movement>().rb;

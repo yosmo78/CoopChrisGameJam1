@@ -17,7 +17,7 @@ public class PlayerStats : MonoBehaviour
     public static int MAX_AMOUNT_TANK_INVENTORY_UPGRADES = 19;
     public static int amountTankInventoryUpgrades = 0;
 
-    public static int MAX_AMOUNT_TRUCK_PORT_INVENTORY_UPGRADES = 14;
+    public static int MAX_AMOUNT_TRUCK_PORT_INVENTORY_UPGRADES = 15;
     public static int amountTruckPortInventoryUpgrades = 0;
 
 
@@ -39,6 +39,8 @@ public class PlayerStats : MonoBehaviour
 	public static int money = 0;
 
     public static int BREAKING_VELOCITY = 2;
+
+    public static bool isKingBlessingPurchased = false;
 
     public static bool truckInventoryHas(int amount)
     {
@@ -93,17 +95,25 @@ public class PlayerStats : MonoBehaviour
     		truckInventory = TRUCK_MAX_INVENTORY;
     	}
 
+        if(isKingBlessingPurchased)
+        {
+            Truck.spriteRenderer[1].sprite = Truck.toilet;
+            Truck.spriteRenderer[0].sprite = Truck.flag;
+            Truck.spriteRenderer[0].flipX = true;
+        }
+        else
+        {
+    	   if(truckInventory > 0)
+    	   {
 
-    	if(truckInventory > 0)
-    	{
-
-    		Truck.spriteRenderer[0].sprite = Truck.fullTruckFront;
-    		Truck.spriteRenderer[1].sprite = Truck.fullTruckBack;
-    	}
-    	else
-    	{
-    		Truck.spriteRenderer[0].sprite = Truck.emptyTruckFront;
-    		Truck.spriteRenderer[1].sprite = Truck.emptyTruckBack;
-    	}
+    		  Truck.spriteRenderer[0].sprite = Truck.fullTruckFront;
+    		  Truck.spriteRenderer[1].sprite = Truck.fullTruckBack;
+    	   }
+    	   else
+    	   {
+    		  Truck.spriteRenderer[0].sprite = Truck.emptyTruckFront;
+    		  Truck.spriteRenderer[1].sprite = Truck.emptyTruckBack;
+    	   }
+        }
 	}
 }
