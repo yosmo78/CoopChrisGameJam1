@@ -67,7 +67,7 @@ public class BoatUpgradeUI : MonoBehaviour
     	FactoryLineSpeedIncreaseButton.onClick.AddListener(delegate {TaskWithParameters(BoatButtonTypes.FactoryLineSpeedIncrease); });
     	CushionedCargoButton.onClick.AddListener(delegate {TaskWithParameters(BoatButtonTypes.CushionedCargo); });
     	AutoDeliveryButton.onClick.AddListener(delegate {TaskWithParameters(BoatButtonTypes.AutoDelivery); });
-    	QueensBlessingButton.onClick.AddListener(delegate {TaskWithParameters(BoatButtonTypes.CushionedCargo); });
+    	QueensBlessingButton.onClick.AddListener(delegate {TaskWithParameters(BoatButtonTypes.QueensBlessing); });
     	ExitButton.onClick.AddListener(delegate {TaskWithParameters(BoatButtonTypes.Exit); });
 
     	CoveExpansionButton.GetComponentInChildren<Text>().text = "$"+CoveExpansionPrice;
