@@ -53,7 +53,6 @@ public class BoatUpgradeUI : MonoBehaviour
    	private static bool isCoveExpansionPurchased = false;
     private static bool isSpeedBoatBoostPurchased = false;
     private static bool isInventoryIncreaseMaxed = false;
-    private static bool isBoatFactoryLinePurchased = false;
     private static bool isCushionedCargoPurchased = false;
     private static bool isFactoryLineSpeedIncreasePurchased = false;
     private static bool isAutoDeliveryPurchased = false;
@@ -187,17 +186,17 @@ public class BoatUpgradeUI : MonoBehaviour
     		case BoatButtonTypes.BoatFactoryLine:
         		{
 
-        			if(PlayerStats.money >= BoatFactoryLinePrice && !isBoatFactoryLinePurchased)
+        			if(PlayerStats.money >= BoatFactoryLinePrice && !PlayerStats.isBoatFactoryLinePurchased)
                     {
                     	BoatFactoryLine.SetActive(true);
-                        isBoatFactoryLinePurchased = true;
+                        PlayerStats.isBoatFactoryLinePurchased = true;
                         PlayerStats.money -= BoatFactoryLinePrice;
                         BoatFactoryLineButton.GetComponent<Image>().color = new Color32(255,0,0,100);
                         BoatFactoryLineButton.GetComponentInChildren<Text>().text = "DONE";
                     }
                     else
                     {
-                    	if(isBoatFactoryLinePurchased)
+                    	if(PlayerStats.isBoatFactoryLinePurchased)
                     	{
                     		SetStoreText("ALREADY PURCHASED");
                     	}
@@ -210,7 +209,7 @@ public class BoatUpgradeUI : MonoBehaviour
     			break;
     		case BoatButtonTypes.FactoryLineSpeedIncrease:
         		{
-        			if(PlayerStats.money >= FactoryLineSpeedIncreasePrice && !isFactoryLineSpeedIncreasePurchased && isBoatFactoryLinePurchased)
+        			if(PlayerStats.money >= FactoryLineSpeedIncreasePrice && !isFactoryLineSpeedIncreasePurchased && PlayerStats.isBoatFactoryLinePurchased)
                     {
                         BoatFactoryLineBox.GetComponent<Animator>().speed = 2.0f;
                         isFactoryLineSpeedIncreasePurchased = true;
@@ -220,7 +219,7 @@ public class BoatUpgradeUI : MonoBehaviour
                     }
                     else
                     {
-                        if(isBoatFactoryLinePurchased)
+                        if(PlayerStats.isBoatFactoryLinePurchased)
                         {
                             if(isFactoryLineSpeedIncreasePurchased)
                             {
