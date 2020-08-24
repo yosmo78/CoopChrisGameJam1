@@ -18,6 +18,8 @@ public class CameraFollow : MonoBehaviour
     public GameObject UpgradeZoneCity;
     public GameObject PortCacheZone;
     public GameObject PortCacheBoatZone;
+    public GameObject PortCacheTankZone;
+    public GameObject PortCacheBoatTankZone;
 
     void Start()
     {
@@ -38,21 +40,28 @@ public class CameraFollow : MonoBehaviour
 
     void LateUpdate()
     {
-        if(Input.GetKeyDown(KeyCode.P))
-            PlayerStats.updateTruckInventory(1);
-        if(Input.GetKeyDown(KeyCode.M))
-            PlayerStats.money += 1000;
+        if (Debug.isDebugBuild) 
+        {
+            if(Input.GetKeyDown(KeyCode.P))
+                PlayerStats.updateTruckInventory(1);
+            if(Input.GetKeyDown(KeyCode.M))
+                PlayerStats.money += 1000;
+        }
 
         if(!UpgradeZoneOcean.GetComponent<UpgradeZoneOcean>().inMenu 
             && !UpgradeZoneCity.GetComponent<UpgradeZoneCity>().inMenu 
+            && !PortCacheTankZone.GetComponent<PortCacheTankZone>().inMenu 
+            && !PortCacheBoatTankZone.GetComponent<PortCacheBoatTankZone>().inMenu 
             && !PortCacheZone.GetComponent<PortCacheZone>().inMenu 
             && !PortCacheBoatZone.GetComponent<PortCacheBoatZone>().inMenu)
+
         {
             if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1)) { SwapToTruck(); following = truck; }
 
             if (Input.GetKeyDown(KeyCode.Alpha2)|| Input.GetKeyDown(KeyCode.Keypad2)) { SwapToBoat(); following = boat;}
 
-            if (Input.GetKeyDown(KeyCode.Alpha3)|| Input.GetKeyDown(KeyCode.Keypad3)) { SwapToTank(); following = tank;}
+            if (Debug.isDebugBuild) 
+                if (Input.GetKeyDown(KeyCode.Alpha3)|| Input.GetKeyDown(KeyCode.Keypad3)) { SwapToTank(); following = tank;}
             transform.position = following.transform.position + offset;
         }
 

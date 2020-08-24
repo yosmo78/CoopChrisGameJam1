@@ -17,7 +17,7 @@ public class PortCacheUI : MonoBehaviour
 {
 	public int SellPortInventoryPrice = 10;
     public int PortInventoryIncreasePrice = 150;
-    public int BuyPirateMedallionPrice = 9999;
+    public int BuyPirateMedallionPrice = 500;
     
 
 	public Button SellPortInventoryButton = null;
@@ -39,6 +39,7 @@ public class PortCacheUI : MonoBehaviour
     public GameObject TruckPortUI;
     public GameObject PortCacheZone;
     public GameObject PortCacheBoatZone;
+    public GameObject BoatUpgradeRocks;
 
     private float timeToAppear = 2f;
     private float timeWhenDisappear;
@@ -180,7 +181,25 @@ public class PortCacheUI : MonoBehaviour
     			break;
     		case PortButtonTypes.BuyPirateMedallion:
         		{
-        			Debug.Log("BuyPirateMedallion purchased");
+        			if(PlayerStats.money >= BuyPirateMedallionPrice && !PlayerStats.isPirateMedallionPurchased)
+                    {
+                        PlayerStats.isPirateMedallionPurchased = true;
+                        BoatUpgradeRocks.SetActive(false);
+                        PlayerStats.money -= BuyPirateMedallionPrice;
+                        BuyPirateMedallionButton.GetComponent<Image>().color = new Color32(255,0,0,100);
+                        BuyPirateMedallionButton.GetComponentInChildren<Text>().text = "DONE";
+                    }
+                    else
+                    {
+                        if(PlayerStats.isPirateMedallionPurchased)
+                        {
+                            SetStoreText("ALREADY PURCHASED");
+                        }
+                        else
+                        {
+                            SetStoreText("NOT ENOUGH MONEY");
+                        }
+                    }
         		}
     			break;
     		case PortButtonTypes.Exit:

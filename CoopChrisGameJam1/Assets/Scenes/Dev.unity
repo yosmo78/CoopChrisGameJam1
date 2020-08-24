@@ -647,6 +647,77 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 66256590}
   m_CullTransparentMesh: 0
+--- !u!1 &85954534
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 85954537}
+  - component: {fileID: 85954536}
+  - component: {fileID: 85954535}
+  m_Layer: 0
+  m_Name: PickupBoatZone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &85954535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 85954534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b48c052899836c2478256c3ad990d277, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waterBox: {fileID: 0}
+--- !u!61 &85954536
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 85954534}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.030324936, y: 0.07670212}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.34000015, y: 0.15448761}
+  m_EdgeRadius: 0
+--- !u!4 &85954537
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 85954534}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 2.25, y: 17.100746, z: -6.499031}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 19
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &95251059
 GameObject:
   m_ObjectHideFlags: 0
@@ -738,7 +809,7 @@ GameObject:
   - component: {fileID: 105500414}
   - component: {fileID: 105500413}
   m_Layer: 13
-  m_Name: TruckInventory
+  m_Name: TankInventory
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -796,7 +867,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'TRUCK INVENTORY:'
+  m_Text: 'TANK INVENTORY:'
 --- !u!222 &105500414
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9233,6 +9304,8 @@ MonoBehaviour:
   UpgradeZoneCity: {fileID: 968030671}
   PortCacheZone: {fileID: 511209349}
   PortCacheBoatZone: {fileID: 1637875457}
+  PortCacheTankZone: {fileID: 1198290365}
+  PortCacheBoatTankZone: {fileID: 1096940717}
 --- !u!1 &377310990
 GameObject:
   m_ObjectHideFlags: 0
@@ -11278,7 +11351,7 @@ RectTransform:
   - {fileID: 2685294}
   - {fileID: 577688306}
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -13079,7 +13152,7 @@ GameObject:
   - component: {fileID: 493164237}
   - component: {fileID: 493164236}
   m_Layer: 13
-  m_Name: DepositTruckInventoryButton
+  m_Name: DepositBoatInventoryButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31521,7 +31594,7 @@ GameObject:
   - component: {fileID: 948513957}
   - component: {fileID: 948513956}
   m_Layer: 13
-  m_Name: PirateMedallion
+  m_Name: StaffOfTheHero
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31579,7 +31652,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: BUY PIRATE MEDALLION
+  m_Text: BUY STAFF OF THE HERO
 --- !u!222 &948513957
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -41027,7 +41100,7 @@ GameObject:
   - component: {fileID: 1088659476}
   - component: {fileID: 1088659475}
   m_Layer: 13
-  m_Name: PirateMedallionButton
+  m_Name: StaffOfTheHeroButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -41161,10 +41234,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1096940717}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a619189d63d3f624b971ac1d08fc44d9, type: 3}
+  m_Script: {fileID: 11500000, guid: 511b28111559034499d4d326a50f4241, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TruckPortUI: {fileID: 397848845}
+  TankPortUI: {fileID: 397848845}
   EventSystem: {fileID: 1676165493}
   Boat: {fileID: 8165250529940224842}
   inMenu: 0
@@ -41202,11 +41275,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1096940717}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 11.51, y: -2.09, z: -6.499031}
+  m_LocalPosition: {x: 40.89, y: -0.95, z: -6.499031}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1128669598
 GameObject:
@@ -44977,12 +45050,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1198290365}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df196a10d2fc2b040928c92bfd80a83b, type: 3}
+  m_Script: {fileID: 11500000, guid: 2861666649d332c4ab3093e320b9daf8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TruckPortUI: {fileID: 397848845}
+  TankPortUI: {fileID: 397848845}
   EventSystem: {fileID: 1676165493}
-  Truck: {fileID: 982565320}
+  Tank: {fileID: 4598917384038839917}
   inMenu: 0
 --- !u!61 &1198290367
 BoxCollider2D:
@@ -45018,11 +45091,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1198290365}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -13.140001, y: 14.962, z: -6.499031}
+  m_LocalPosition: {x: 42.28, y: -1.026, z: -6.499031}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1198823848
 GameObject:
@@ -45235,7 +45308,7 @@ GameObject:
   - component: {fileID: 1218300759}
   - component: {fileID: 1218300758}
   m_Layer: 13
-  m_Name: TruckInventoryText
+  m_Name: TankInventoryText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45879,7 +45952,7 @@ GameObject:
   - component: {fileID: 1312667994}
   - component: {fileID: 1312667993}
   m_Layer: 13
-  m_Name: DepositTruckInventory
+  m_Name: DepositBoatInventory
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45937,7 +46010,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: DEPOSIT TRUCK INVENTORY
+  m_Text: DEPOSIT BOAT INVENTORY
 --- !u!222 &1312667994
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -50134,7 +50207,7 @@ GameObject:
   - component: {fileID: 1484829510}
   - component: {fileID: 1484829509}
   m_Layer: 13
-  m_Name: WithdrawBoatInventoryButton
+  m_Name: WithdrawTankInventoryButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -51582,6 +51655,7 @@ MonoBehaviour:
   TruckPortUI: {fileID: 1133307131}
   PortCacheZone: {fileID: 511209349}
   PortCacheBoatZone: {fileID: 1637875457}
+  BoatUpgradeRocks: {fileID: 0}
 --- !u!1 &1684367207
 GameObject:
   m_ObjectHideFlags: 0
@@ -60785,7 +60859,7 @@ GameObject:
   - component: {fileID: 2010692132}
   - component: {fileID: 2010692131}
   m_Layer: 13
-  m_Name: WithdrawIntoBoatInventory
+  m_Name: WithdrawIntoTankInventory
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -60843,7 +60917,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: WITHDRAW BOAT INVENTORY
+  m_Text: WITHDRAW TANK INVENTORY
 --- !u!222 &2010692132
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -84154,6 +84228,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e802bd14972e471b9bad9922c7e0dba, type: 3}
+--- !u!1 &4598917384038839917 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7850549366512087513, guid: 4e802bd14972e471b9bad9922c7e0dba, type: 3}
+  m_PrefabInstance: {fileID: 4598917384038839916}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8165250529940224841
 PrefabInstance:
   m_ObjectHideFlags: 0
